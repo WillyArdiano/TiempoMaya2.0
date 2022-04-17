@@ -9,28 +9,28 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Descripcion")
+@Table(name = "Comentario")
 @Getter
 @Setter
 @ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Descripcion {
+public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_descripcion")
-    private int idDescripcion;
-    @Column(name = "nombre_usuario_autor")
-    private String nombreUsuarioAutor;
-    @Column(name = "id_concepto")
-    private int idConcepto;
+    @Column(name = "id_comentario")
+    private int idComentario;
+    @Column(name = "nombre_usuario")
+    private String nombreUsuario;
+    @Column(name = "contenido")
+    private String contenido;
     @Column(name = "fecha_hora")
     @JsonProperty("fechaHora")
     @JsonFormat(pattern= Fecha.FORMATO_FECHA)
     private Timestamp fechaHora;
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "id_concepto")
+    private int idConcepto;
 
 }

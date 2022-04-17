@@ -1,10 +1,14 @@
 package com.ts2.tiempomaya.modelo;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ts2.tiempomaya.utilidad.Fecha;
 import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -32,7 +36,9 @@ public class Juego {
     @Column(name = "dificultad")
     private int dificultad;
     @Column(name = "fecha_hora")
-    private LocalDateTime fechaHora;
+    @JsonProperty("fechaHora")
+    @JsonFormat(pattern= Fecha.FORMATO_FECHA)
+    private Timestamp fechaHora;
 
 
 }
