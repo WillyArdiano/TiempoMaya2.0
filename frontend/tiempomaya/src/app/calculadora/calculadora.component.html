@@ -1,0 +1,103 @@
+<div class="background"></div>
+<div class="container">
+  <h1 class="irregular-border">CALCULADORA MAYA</h1>
+  <div id="math">
+    <div class="math-card" id="op1">
+      <div class="mayan-number-card" (click)="selectNumber('o1l4')">
+        <canvas id="o1l4" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^3</span>
+      </div>
+      <div class="mayan-number-card" (click)="selectNumber('o1l3')">
+        <canvas id="o1l3" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^2</span>
+      </div>
+      <div class="mayan-number-card" (click)="selectNumber('o1l2')">
+        <canvas id="o1l2" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^1</span>
+      </div>
+      <div class="mayan-number-card" (click)="selectNumber('o1l1')">
+        <canvas id="o1l1" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^0</span>
+      </div>
+    </div>
+    <div class="math-op" id="operation">
+      <div class="mayan-number-card without-back" (click)="selectOperation()">
+        <h1 id="operator" class="operator">+</h1>
+        <span class="tooltiptext">Elige la operacion</span>
+      </div>
+    </div>
+    <div class="math-card" id="op2">
+      <div class="mayan-number-card" (click)="selectNumber('o2l4')">
+        <canvas id="o2l4" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^3</span>
+      </div>
+      <div class="mayan-number-card" (click)="selectNumber('o2l3')">
+        <canvas id="o2l3" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^2</span>
+      </div>
+      <div class="mayan-number-card" (click)="selectNumber('o2l2')">
+        <canvas id="o2l2" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^1</span>
+      </div>
+      <div class="mayan-number-card" (click)="selectNumber('o2l1')">
+        <canvas id="o2l1" width="50" height="50" number="0"></canvas>
+        <span class="tooltiptext">20^0</span>
+      </div>
+    </div>
+    <div class="math-op">
+      <div class="mayan-number-card without-back" (click)="resolve()">
+        <h1 class="operator">=</h1>
+        <span class="tooltiptext">Resuelve</span>
+      </div>
+    </div>
+    <div class="math-card" id="result">
+      <div class="mayan-number-result">
+        <canvas id="rl4" width="50" height="50"></canvas>
+      </div>
+      <div class="mayan-number-result">
+        <canvas id="rl3" width="50" height="50"></canvas>
+      </div>
+      <div class="mayan-number-result">
+        <canvas id="rl2" width="50" height="50"></canvas>
+      </div>
+      <div class="mayan-number-result">
+        <canvas id="rl1" width="50" height="50"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="hide" class="hide" style="display: none;" #hide>
+  <h1>Elige un número</h1>
+  <div id="menu">
+    <div class="row">
+    </div>
+    <div class="row">
+    </div>
+    <div class="row">
+    </div>
+    <div class="row">
+    </div>
+  </div>
+</div>
+
+<div id="hide2" class="hide" style="display: none;">
+  <h1>Elige una operacion</h1>
+  <div id="menu">
+    <div class="mayan-number-card" (click)="changeOperation('+')">
+      <h1>+</h1>
+      <span class="tooltiptext">Suma</span>
+    </div>
+    <div class="mayan-number-card" (click)="changeOperation('-')">
+      <h1>-</h1>
+      <span class="tooltiptext">Resta</span>
+    </div>
+    <div class="mayan-number-card" (click)="changeOperation('*')">
+      <h1>*</h1>
+      <span class="tooltiptext">Multiplicacion</span>
+    </div>
+    <div class="mayan-number-card" (click)="changeOperation('/')">
+      <h1>/</h1>
+      <span class="tooltiptext">Division</span>
+    </div>
+  </div>
+</div>
