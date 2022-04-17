@@ -10,6 +10,8 @@ export class CalculadoraMayaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
 
 }
