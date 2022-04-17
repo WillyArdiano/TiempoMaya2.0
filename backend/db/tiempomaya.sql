@@ -27,10 +27,13 @@ CREATE TABLE `Comentario` (
   `nombre_usuario` varchar(25) NOT NULL,
   `contenido` varchar(500) DEFAULT NULL,
   `fecha_hora` timestamp NOT NULL,
+  `id_descripcion` int NOT NULL,
   PRIMARY KEY (`id_comentario`),
   KEY `FK_nombre_usuario_idx` (`nombre_usuario`),
+  KEY `fk_descripcion_comentario_idx` (`id_descripcion`),
+  CONSTRAINT `fk_descripcion_comentario` FOREIGN KEY (`id_descripcion`) REFERENCES `Descripcion` (`id_descripcion`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_nombre_usuario_comentario` FOREIGN KEY (`nombre_usuario`) REFERENCES `Usuario` (`nombre_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,34 +42,8 @@ CREATE TABLE `Comentario` (
 
 LOCK TABLES `Comentario` WRITE;
 /*!40000 ALTER TABLE `Comentario` DISABLE KEYS */;
+INSERT INTO `Comentario` VALUES (1,'jugador_2','Este es mi comentario para el concepto 1','2022-04-16 22:05:53',1),(2,'jugador_1','Este es mi comentario para el concepto 1','2022-04-16 22:05:53',1),(3,'jugador_1','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(4,'jugador_2','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(6,'jugador_2','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(7,'jugador_1','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(9,'jugador_1',NULL,'2022-04-17 22:05:53',2);
 /*!40000 ALTER TABLE `Comentario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Comentario_Concepto`
---
-
-DROP TABLE IF EXISTS `Comentario_Concepto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Comentario_Concepto` (
-  `id_concepto` int NOT NULL,
-  `id_comentario` int NOT NULL,
-  PRIMARY KEY (`id_concepto`,`id_comentario`),
-  KEY `fk_Palabra_has_Comentario_Comentario1_idx` (`id_comentario`),
-  KEY `fk_Palabra_has_Comentario_Palabra1_idx` (`id_concepto`),
-  CONSTRAINT `fk_Concepto_has_Comentario_Comentario1` FOREIGN KEY (`id_comentario`) REFERENCES `Comentario` (`id_comentario`),
-  CONSTRAINT `fk_Concepto_has_Comentario_Concepto1` FOREIGN KEY (`id_concepto`) REFERENCES `Concepto` (`id_concepto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Comentario_Concepto`
---
-
-LOCK TABLES `Comentario_Concepto` WRITE;
-/*!40000 ALTER TABLE `Comentario_Concepto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Comentario_Concepto` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -168,7 +145,7 @@ CREATE TABLE `Juego` (
   `tiempo` time NOT NULL,
   `fallos` int NOT NULL DEFAULT '0',
   `dificultad` int NOT NULL,
-  `fecha_hora` datetime NOT NULL,
+  `fecha_hora` timestamp NOT NULL,
   PRIMARY KEY (`id_juego`),
   KEY `fk_nombre_usuario_punteo_idx` (`nombre_usuario`),
   CONSTRAINT `fk_nombre_usuario_juego` FOREIGN KEY (`nombre_usuario`) REFERENCES `Usuario` (`nombre_usuario`)
@@ -181,38 +158,39 @@ CREATE TABLE `Juego` (
 
 LOCK TABLES `Juego` WRITE;
 /*!40000 ALTER TABLE `Juego` DISABLE KEYS */;
-INSERT INTO `Juego` VALUES (1,'jugador_1',80,'00:01:30',1,1,'2022-04-14 20:34:43'),(2,'jugador_2',80,'00:01:30',1,1,'2022-04-14 22:19:39'),(3,'jugador_2',80,'00:01:30',1,1,'2022-04-14 22:19:39');
+INSERT INTO `Juego` VALUES (1,'jugador_1',80,'00:01:30',1,1,'2022-04-15 02:34:43'),(2,'jugador_2',80,'00:01:30',1,1,'2022-04-15 04:19:39'),(3,'jugador_2',80,'00:01:30',1,1,'2022-04-15 04:19:39');
 /*!40000 ALTER TABLE `Juego` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Reaccion_Concepto`
+-- Table structure for table `Reaccion`
 --
 
-DROP TABLE IF EXISTS `Reaccion_Concepto`;
+DROP TABLE IF EXISTS `Reaccion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Reaccion_Concepto` (
+CREATE TABLE `Reaccion` (
   `id_reaccion` int NOT NULL AUTO_INCREMENT,
   `nombre_usuario` varchar(25) NOT NULL,
-  `id_concepto` int NOT NULL,
-  `fecha_hora` datetime NOT NULL,
+  `id_descripcion` int NOT NULL,
+  `fecha_hora` timestamp NOT NULL,
   `tipo_reaccion` int NOT NULL,
   PRIMARY KEY (`id_reaccion`),
   KEY `fk_nombre_usuario_reaccion_idx` (`nombre_usuario`),
-  KEY `fk_id_concepto_reaccion_idx` (`id_concepto`),
-  CONSTRAINT `fk_id_concepto_reaccion` FOREIGN KEY (`id_concepto`) REFERENCES `Concepto` (`id_concepto`),
+  KEY `fk_id_descripcion_reaccion_idx` (`id_descripcion`),
+  CONSTRAINT `fk_id_descripcion_reaccion` FOREIGN KEY (`id_descripcion`) REFERENCES `Descripcion` (`id_descripcion`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_nombre_usuario_reaccion` FOREIGN KEY (`nombre_usuario`) REFERENCES `Usuario` (`nombre_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Reaccion_Concepto`
+-- Dumping data for table `Reaccion`
 --
 
-LOCK TABLES `Reaccion_Concepto` WRITE;
-/*!40000 ALTER TABLE `Reaccion_Concepto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Reaccion_Concepto` ENABLE KEYS */;
+LOCK TABLES `Reaccion` WRITE;
+/*!40000 ALTER TABLE `Reaccion` DISABLE KEYS */;
+INSERT INTO `Reaccion` VALUES (1,'jugador_1',2,'2022-04-17 22:05:53',0),(2,'jugador_2',2,'2022-04-17 22:05:53',0),(3,'jugador_3',2,'2022-04-17 22:05:53',0),(4,'jugador_4',2,'2022-04-17 22:05:53',0),(5,'jugador_5',2,'2022-04-17 22:05:53',0),(6,'jugador_6',2,'2022-04-17 22:05:53',0),(7,'jugador_7',1,'2022-04-17 22:05:53',1);
+/*!40000 ALTER TABLE `Reaccion` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -290,7 +268,7 @@ CREATE TABLE `Usuario` (
 
 LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
-INSERT INTO `Usuario` VALUES ('jugador_1',1,'123','2022-12-11',1,'Direccion del jugador 1'),('jugador_2',1,'1232','2022-12-11',1,'Direccion del jugador 2');
+INSERT INTO `Usuario` VALUES ('jugador_1',1,'123','2022-12-11',1,'Direccion del jugador 1'),('jugador_2',1,'1232','2022-12-11',1,'Direccion del jugador 2'),('jugador_3',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_4',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_5',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_6',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_7',1,'123222','2021-11-12',1,'Direccion del jugador 2');
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -303,4 +281,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-16 23:31:13
+-- Dump completed on 2022-04-17 16:11:52

@@ -17,8 +17,8 @@ public class ServicioJPAComentario implements ServicioComentario {
     }
 
     @Override
-    public List<Comentario> obtenerComentariosConcepto(int idConcepto) {
-        return this.repositorioComentario.findAllByIdConcepto(idConcepto);
+    public List<Comentario> obtenerComentariosDescripcion(int idDescripcion) {
+        return this.repositorioComentario.findAllByIdDescripcion(idDescripcion);
     }
 
     @Override

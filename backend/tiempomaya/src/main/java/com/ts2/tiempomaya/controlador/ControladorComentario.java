@@ -1,9 +1,7 @@
 package com.ts2.tiempomaya.controlador;
 
 import com.ts2.tiempomaya.modelo.Comentario;
-import com.ts2.tiempomaya.modelo.Concepto;
 import com.ts2.tiempomaya.servicio.ServicioComentario;
-import com.ts2.tiempomaya.servicio.ServicioConcepto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,9 +22,9 @@ public class ControladorComentario {
         this.servicioComentario.guardar(comentario);
     }
 
-    @GetMapping("/comentarios/{idConcepto}")
-    public List<Comentario> obtenerComentariosConcepto(@PathVariable int idConcepto) {
-        return this.servicioComentario.obtenerComentariosConcepto(idConcepto);
+    @GetMapping("/comentarios/{idDescripcion}")
+    public List<Comentario> obtenerComentariosDescripcion(@PathVariable int idDescripcion) {
+        return this.servicioComentario.obtenerComentariosDescripcion(idDescripcion);
     }
 
     @GetMapping("/test")

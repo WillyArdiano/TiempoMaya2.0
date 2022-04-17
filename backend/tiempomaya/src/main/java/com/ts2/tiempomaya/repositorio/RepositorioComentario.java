@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface RepositorioComentario extends JpaRepository<Comentario,Integer> {
 
-    List<Comentario> findAllByIdConcepto(int idConcepto);
+    List<Comentario> findAllByIdDescripcion(int idDescripcion);
 
 }
