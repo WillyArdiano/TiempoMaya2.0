@@ -1,0 +1,94 @@
+<div class="background"></div>
+<div class="container">
+	<div class="mayan-button" id="mayan-button">
+		<span class="back-button big-letter">JUGAR</span>
+		<button type="button" class="big-letter" name="Hover" id="btn-start" (click)="chooseDifficult()">MEMORIA MAYA</button>
+	</div>
+	<h1 class="irregular-border" id="title-mayan" style="display: none;">MEMORIA MAYA</h1>
+	<div class="container-difficults" id="chooseDifficults" style="display: none;">
+		<div class="difficult">
+			<img src="../../assets/imgs/memory2.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>KIN-KIN</h1>
+			<p>Junta las parejas de kines</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start()">NUEVO JUEGO</button>
+			</div>
+		</div>
+		<input type="number" style="display: none;" value="0" id="count">
+		<div class="difficult">
+			<img src="../../assets/imgs/memory3.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>KIN-NOMBRE</h1>
+			<p>Junta el kin con su nombre</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start2()">NUEVO JUEGO</button>
+			</div>
+		</div>
+		<div class="difficult">
+			<img src="../../assets/imgs/memory4.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>KIN-NUMERO</h1>
+			<p>Junta el kin con el número que le corresponde</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start3()">NUEVO JUEGO</button>
+			</div>
+		</div>
+		<div class="difficult">
+			<img src="../../assets/imgs/memory1.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>NOMBRE-NUMERO</h1>
+			<p>Junta el nombre del kin con el número que le corresponde</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start4()">NUEVO JUEGO</button>
+			</div>
+		</div>
+	</div>
+	<div id="score" style="display: none;">
+		<div class="part-score">
+			<h3>TIEMPO</h3>
+			<div>
+				<label id="minutes" class="time">00</label>
+				<label id="colon" class="time">:</label>
+				<label id="seconds" class="time">00</label>
+			</div>
+		</div>
+		<div class="part-score">
+			<h3>INTENTOS</h3>
+			<label id="error" class="time">0</label>
+		</div>
+		<div class="part-score">
+			<h3>ACIERTOS</h3>
+			<label id="correct" class="time">0</label>
+		</div>
+	</div>
+	<div id="boardgame" style="display: none;"></div>
+</div>
