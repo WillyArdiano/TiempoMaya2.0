@@ -21,6 +21,11 @@ public class ServicioJPADescripcion implements ServicioDescripcion {
     }
 
     @Override
+    public List<Descripcion> obtenerDescripcionesUsuario(String nombreUsuario) {
+        return this.repositorioDescripcion.findAllByNombreUsuarioAutor(nombreUsuario);
+    }
+
+    @Override
     public void guardar(Descripcion descripcion) {
         this.repositorioDescripcion.save(descripcion);
     }

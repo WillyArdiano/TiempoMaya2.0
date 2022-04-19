@@ -25,4 +25,9 @@ public class ServicioJPAUsuario implements ServicioUsuario {
     public void guardar(Usuario usuario) {
         repositorioUsuario.save(usuario);
     }
+
+    @Override
+    public Usuario obtenerUsuario(String nombreUsuario) {
+        return this.repositorioUsuario.findByNombreUsuario(nombreUsuario);
+    }
 }

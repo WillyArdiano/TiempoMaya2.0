@@ -8,5 +8,6 @@ import java.util.List;
 public interface RepositorioDescripcion extends JpaRepository<Descripcion,Integer> {
 
     List<Descripcion> findAllByIdConcepto(int idConcepto);
+    List<Descripcion> findAllByNombreUsuarioAutor(String nombreUsuario);
 
 }

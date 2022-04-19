@@ -23,8 +23,13 @@ public class ControladorDescripcion {
     }
 
     @GetMapping("/descripciones/{idConcepto}")
-    public List<Descripcion> obtenerConceptos(@PathVariable int idConcepto){
+    public List<Descripcion> obtenerDescripcionesConcepto(@PathVariable int idConcepto){
         return this.servicioDescripcion.obtenerDescripcionesConcepto(idConcepto);
+    }
+
+    @GetMapping("/descripciones/usuario/{nombreUsuario}")
+    public List<Descripcion> obtenerDescripcionesUsuario(@PathVariable String nombreUsuario){
+        return this.servicioDescripcion.obtenerDescripcionesUsuario(nombreUsuario);
     }
 
     @GetMapping("/test")

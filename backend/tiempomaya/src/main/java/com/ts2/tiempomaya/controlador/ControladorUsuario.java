@@ -5,6 +5,7 @@ import com.ts2.tiempomaya.servicio.ServicioUsuario;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 //@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -27,9 +28,19 @@ public class ControladorUsuario {
         return this.servicioUsuario.obtenerUsuarios();
     }
 
-    @GetMapping("/test")
-    public String testing(){
-        return "TESTING FROM SPRING BOOT";
+    @PostMapping("/aut")
+    public int autenticar(@RequestBody Usuario usuario){
+        try {
+            Usuario usuarioDB = servicioUsuario.obtenerUsuario(usuario.getNombreUsuario());
+            if(!Objects.isNull(usuario) && usuario.getContrasenia().equals(usuarioDB.getContrasenia())){
+                return 1;
+            }else{
+                return 0;
+            }
+        }catch (Exception exception){
+            return 0;
+        }
     }
+
 
 }
