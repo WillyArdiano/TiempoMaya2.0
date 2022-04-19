@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculadoraComponent implements OnInit {
   actual: string | undefined;
+  valueOne = 0;
+  valueTwo = 0;
 
   constructor() {
 
@@ -24,7 +26,13 @@ export class CalculadoraComponent implements OnInit {
           var can: any = document.getElementById(id);
           var ctx = can.getContext("2d");
           can.setAttribute("number", (<HTMLDivElement>event.currentTarget).getAttribute("number"));
-          this.dibujando((<HTMLDivElement>event.currentTarget).getAttribute("number"), ctx, can);
+          let numer = (<HTMLDivElement>event.currentTarget).getAttribute("number");
+          this.dibujando(numer, ctx, can);
+          let va1 = [this.returnNumber("o1l1"), this.returnNumber("o1l2"), this.returnNumber("o1l3"), this.returnNumber("o1l4")];
+          let va2 = [this.returnNumber("o2l1"), this.returnNumber("o2l2"), this.returnNumber("o2l3"), this.returnNumber("o2l4")];
+          this.valueOne = this.convertirDecimal(this.convertArray(va1));
+          this.valueTwo = this.convertirDecimal(this.convertArray(va2));
+          //this.valueOne += this.obteneiendoValorDecimal(id, numer);
           (<HTMLDivElement>document.getElementById("hide")).style.display = "none";
         });
         var can = document.createElement("canvas");
@@ -46,9 +54,11 @@ export class CalculadoraComponent implements OnInit {
     });
   }
 
+
   public selectNumber(as: string) {
     (<HTMLDivElement>document.getElementById("hide")).style.display = "flex";
     (<HTMLDivElement>document.getElementById("hide")).style.visibility = "visible";
+    console.log(as);
     this.actual = as;
   }
 
@@ -141,6 +151,7 @@ export class CalculadoraComponent implements OnInit {
     ctx.stroke();
   }
 
+  resutadoDecimal= 0;
   public resolve() {
     var comps_operator1 = [this.returnNumber("o1l1"), this.returnNumber("o1l2"), this.returnNumber("o1l3"), this.returnNumber("o1l4")]; //returns the operator1 in parts, index 0 is the section of 20^0
     var comps_operator2 = [this.returnNumber("o2l1"), this.returnNumber("o2l2"), this.returnNumber("o2l3"), this.returnNumber("o2l4")]; //returns the operator2 in parts, index 0 is the section of 20^0
@@ -158,7 +169,39 @@ export class CalculadoraComponent implements OnInit {
       case "/":
         break;
     }
+    this.resutadoDecimal = this.convertirDecimal(result);
+    console.log(result);
     this.drawResult(result);
+  }
+
+  public convertArray(value:any) {
+    let result:any = [];
+    for (let i = 0; i < 4; i++) {
+      result.push(parseInt(value[i]));
+    }
+    console.log(result);
+    return result;
+  }
+
+  public convertirDecimal(result:any) {
+    let valueDecimal = 0;
+    for (let i = 0; i < result.length; i++) {
+        switch (i) {
+          case 0:
+            valueDecimal = result[i];
+            break;
+          case 1:
+            valueDecimal += (result[i] * 20);
+            break;
+          case 2:
+            valueDecimal += (result[i] * 400);
+            break;
+          case 3:
+            valueDecimal += (result[i] * 8000);
+            break;
+        }
+    }
+    return valueDecimal;
   }
 
   carry = 0;
@@ -172,7 +215,7 @@ export class CalculadoraComponent implements OnInit {
     return result;
   }
 
-  
+
 
 
   public minus(comps1:any, comps2:any) {
@@ -234,6 +277,8 @@ export class CalculadoraComponent implements OnInit {
 
   public selectOperation() {
     (<HTMLDivElement>document.getElementById("hide2")).style.display = "flex";
+    //(<HTMLDivElement>document.getElementById("hide")).style.display = "flex";
+    (<HTMLDivElement>document.getElementById("hide2")).style.visibility = "visible";
   }
 
   public changeOperation(operation:any) {

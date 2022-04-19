@@ -19,6 +19,9 @@
         <canvas id="o1l1" width="50" height="50" number="0"></canvas>
         <span class="tooltiptext">20^0</span>
       </div>
+      <div class="mayan-number-result">
+        <h1>{{valueOne }}</h1>
+      </div>
     </div>
     <div class="math-op" id="operation">
       <div class="mayan-number-card without-back" (click)="selectOperation()">
@@ -43,6 +46,9 @@
         <canvas id="o2l1" width="50" height="50" number="0"></canvas>
         <span class="tooltiptext">20^0</span>
       </div>
+      <div class="mayan-number-result">
+        <h1>{{valueTwo }}</h1>
+      </div>
     </div>
     <div class="math-op">
       <div class="mayan-number-card without-back" (click)="resolve()">
@@ -63,6 +69,9 @@
       <div class="mayan-number-result">
         <canvas id="rl1" width="50" height="50"></canvas>
       </div>
+      <div class="mayan-number-result">
+        <h1>{{resutadoDecimal }}</h1>
+      </div>
     </div>
   </div>
 </div>
@@ -80,9 +89,9 @@
   </div>
 </div>
 
-<div id="hide2" class="hide" style="display: none;">
+<div id="hide2" class="hide" style="display: none;" >
   <h1>Elige una operacion</h1>
-  <div id="menu">
+  <div id="menu2">
     <div class="mayan-number-card" (click)="changeOperation('+')">
       <h1>+</h1>
       <span class="tooltiptext">Suma</span>

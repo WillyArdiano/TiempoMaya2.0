@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eb45c96a-838d-4fa1-a171-66797a8125ff" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="27loVVM4kYTIk2oMwvKOMYZWIkF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.calculadora-maya.component.html">
+    <configuration name="All in TiempoMaya2.0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TiempoMaya2.0" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="calculadora-maya.component.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/TiempoMaya2.0/frontend/tiempomaya/src/app/calculadora-maya/calculadora-maya.component.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="TiempomayaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="tiempomaya" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ts2.tiempomaya.TiempomayaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.calculadora-maya.component.html" />
+        <item itemvalue="JUnit.All in TiempoMaya2.0" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb45c96a-838d-4fa1-a171-66797a8125ff" name="Changes" comment="" />
+      <created>1649904057981</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649904057981</updated>
+      <workItem from="1649904068926" duration="3601000" />
+      <workItem from="1650081132904" duration="5295000" />
+      <workItem from="1650122545330" duration="7327000" />
+      <workItem from="1650170392003" duration="1458000" />
+      <workItem from="1650240838134" duration="4466000" />
+      <workItem from="1650346782540" duration="8150000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
