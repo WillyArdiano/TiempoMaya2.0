@@ -1,0 +1,76 @@
+.banner{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+	background-image: url(../assets/imgs/rock.png);
+	margin: 0;
+	height: 10vh;
+	border-bottom: 4px solid black;
+}
+
+
+.component-banner{
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.component-banner img{
+	width: 3em;
+	height: 3em;
+}
+
+.name-comp{
+	display: none;
+}
+
+.comp-banner:hover .name-comp{
+	display: block;
+	animation: showName 2s;
+}
+
+.comp-banner:hover{
+	background-color: aqua;
+	padding-left: 1em;
+	border-radius: 1em;
+}
+
+.comp-banner{
+	margin-left: 0.5em;
+}
+
+.comp-banner:hover, .comp-banner img, .comp-banner h1{
+	cursor: url(../assets/imgs/pointer2.png),auto;
+}
+
+.component-banner h1 {
+	margin: 0.4em;
+}
+
+.comp-banner{
+	
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@keyframes showName {
+	from {
+		transform:translateX(-5);
+	}
+
+	to {
+		transform:translateX(0);
+	}
+}

@@ -1,0 +1,166 @@
+<div class="background"></div>
+<div class="container">
+	<div id="memoriaPrincipal">
+		<div class="mayan-button" id="mayan-button">
+			<span class="back-button big-letter">JUGAR</span>
+			<button type="button" class="big-letter" name="Hover" id="btn-start" (click)="chooseDifficult()">MEMORIA
+				MAYA</button>
+		</div>
+		<div id="puntajes">
+			<div style="display: flex;flex-direction: column;">
+				<label for="dificultades" style="text-align: center;color: yellow;font-size: 2em;">PUNTAJES</label>
+				<select name="dificultades" id="selectDificultades">
+					<option value="1">KIN-KIN</option>
+					<option value="2">KIN-NOMBRE</option>
+					<option value="3">KIN-NUMERO</option>
+					<option value="4">NOMBRE-NUMERO</option>
+				</select>
+			</div>
+			<div id="tablaPuntajes">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="3">PUNTAJES GLOBALES</th>
+						</tr>
+						<tr>
+							<th>#</th>
+							<th>USUARIO</th>
+							<th>PUNTAJE</th>
+						</tr>
+					</thead>
+					<tbody id="puntajesGlobales">
+						<tr>
+							<td colspan="3">AUN NO HAY PUNTAJES</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">PUNTAJES PERSONALES</th>
+						</tr>
+						<tr>
+							<th>#</th>
+							<th>PUNTAJE</th>
+						</tr>
+					</thead>
+					<tbody id="puntajesPersonales">
+						<tr>
+							<td colspan="2">AUN NO HAY PUNTAJES</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<h1 class="irregular-border" id="title-mayan" style="display: none;">Elige la dificultad</h1>
+	<div class="container-difficults" id="chooseDifficults" style="display: none;">
+		<div class="difficult">
+			<img src="../../assets/imgs/memory2.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>KIN-KIN</h1>
+			<p>Junta las parejas de kines</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start()">NUEVO JUEGO</button>
+			</div>
+		</div>
+		<input type="number" style="display: none;" value="0" id="count">
+		<div class="difficult">
+			<img src="../../assets/imgs/memory3.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>KIN-NOMBRE</h1>
+			<p>Junta el kin con su nombre</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start2()">NUEVO JUEGO</button>
+			</div>
+		</div>
+		<div class="difficult">
+			<img src="../../assets/imgs/memory4.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>KIN-NUMERO</h1>
+			<p>Junta el kin con el número que le corresponde</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start3()">NUEVO JUEGO</button>
+			</div>
+		</div>
+		<div class="difficult">
+			<img src="../../assets/imgs/memory1.png" width="0.5em" height="0.5em" alt="Level 1">
+			<div class="level-difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult" class="desaturate">
+			</div>
+			<h1>NOMBRE-NUMERO</h1>
+			<p>Junta el nombre del kin con el número que le corresponde</p>
+			<div class="mayan-button" style="display: block !important;">
+				<span class="back-button">IR</span>
+				<button type="button" name="Hover" (click)="start4()">NUEVO JUEGO</button>
+			</div>
+		</div>
+	</div>
+	<div class="game board" id="game" style="display: none;">
+		<div class="win" id="win" style="display: none;">
+			<h1 style="color: yellow; font-size: 3em;">GANASTE!</h1>
+			<h4 style="color: yellow;">TU PUNTAJE FUE <span style="font-size: 3em;">140</span></h4>
+			<div style="display: flex;flex-direction: row;">
+				<button (click)="chooseDifficult()">NUEVO JUEGO</button>
+				<button>VER PUNTAJES</button>
+			</div>
+		</div>
+		<div id="score">
+			<div class="part-score">
+				<h1>MEMORIA</h1>
+				<h1>MAYA</h1>
+			</div>
+			<div class="level-difficult" id="difficultActualGame">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+				<img src="../../assets/imgs/level.png" alt="Difficult">
+			</div>
+			<div class="part-score">
+				<h3>TIEMPO</h3>
+				<div>
+					<label id="minutes" class="time">00</label>
+					<label id="colon" class="time">:</label>
+					<label id="seconds" class="time">00</label>
+				</div>
+			</div>
+			<div class="part-score">
+				<h3>INTENTOS</h3>
+				<label id="error" class="time">0</label>
+			</div>
+			<div class="part-score">
+				<h3>ACIERTOS</h3>
+				<label id="correct" class="time">0</label>
+			</div>
+			<button type="button" name="Hover" (click)="chooseDifficult()">NUEVO JUEGO</button>
+		</div>
+		<div id="boardgame">
+		</div>
+	</div>
+</div>
