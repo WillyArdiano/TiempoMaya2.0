@@ -6,39 +6,65 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./memoria.component.css']
 })
 export class MemoriaComponent implements OnInit {
-
+  audio = new Audio();
+  winAudio = new Audio();
   availableImages = ['imix', 'ik', 'akbal', 'kan', 'chikchan', 'kimi', 'manik', 'lamat', 'muluk', 'ok', 'chuen', 'eb', 'ben', 'ix', 'men', 'kib', 'kaban', 'etznab', 'kauak', 'ajau'];
-	availableImages2 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
-	availableNames = ['imix', 'ik\'', 'ak\'bal', 'k\'an', 'chikchan', 'kimi', 'manik', 'lamat', 'muluk', 'ok', 'chuen', 'eb', 'ben', 'ix', 'men', 'k\'ib', 'kaban', 'etznab', 'kauak', 'ajau'];
+  availableImages2 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
+  availableNames = ['imix', 'ik\'', 'ak\'bal', 'k\'an', 'chikchan', 'kimi', 'manik', 'lamat', 'muluk', 'ok', 'chuen', 'eb', 'ben', 'ix', 'men', 'k\'ib', 'kaban', 'etznab', 'kauak', 'ajau'];
   card_up = 0;
 
-  constructor(){
+  constructor() {
 
   }
 
   ngOnInit(): void {
+    this.audio.src = "../../assets/sounds/good.mpeg";
+    this.audio.load();
+    this.winAudio.src = "../../assets/sounds/win.mpeg";
+    this.winAudio.load();
     setTimeout(() => {
       (<HTMLDivElement>document.getElementById("mayan-button")).style.display = "block";
     }, 100);
   }
 
   public chooseDifficult() {
+    (<HTMLDivElement>document.getElementById("game")).style.display = "none";
+    (<HTMLDivElement>document.getElementById("puntajes")).style.display = "none";
+    (<HTMLDivElement>document.getElementById("win")).style.display = "none";
     (<HTMLDivElement>document.getElementById("btn-start")).style.display = "none";
     (<HTMLDivElement>document.getElementById("chooseDifficults")).style.display = "flex";
     (<HTMLDivElement>document.getElementById("title-mayan")).style.display = "flex";
   }
 
-  public start() {
+
+  public startDivGame(game:number){
+    var imgs:any = document.querySelector("#difficultActualGame")?.querySelectorAll("img");
+    (<HTMLDivElement>document.querySelector("#difficultActualGame")).setAttribute("dificultad",game+"");
+    imgs.forEach((element: HTMLImageElement) => {
+      element.classList.remove("desaturate");
+    });
+    for (let i = game; i < 5; i++) {
+      (<HTMLImageElement>imgs[i]).classList.add("desaturate");
+    }
+    clearInterval(this.intervalo);
+    (<HTMLDivElement>document.getElementById("title-mayan")).style.display = "none";
+    (<HTMLLabelElement>document.getElementById("minutes")).textContent = "00";
+    (<HTMLLabelElement>document.getElementById("seconds")).textContent = "00";
+    (<HTMLLabelElement>document.getElementById("error")).textContent = "0";
+    (<HTMLLabelElement>document.getElementById("correct")).textContent = "0";
     (<HTMLDivElement>document.getElementById("chooseDifficults")).style.display = "none";
     var maindiv = document.getElementById("boardgame");
-    (<HTMLDivElement>document.getElementById("score")).style.display = "flex";
+    (<HTMLDivElement>document.getElementById("game")).style.display = "flex";
     let moves = 0;
-    let max = 16;
     (<HTMLDivElement>maindiv).style.display = "";
     while ((<HTMLDivElement>maindiv).firstChild) {
-        (<HTMLDivElement>maindiv).removeChild((<any>maindiv).lastChild);
+      (<HTMLDivElement>maindiv).removeChild((<any>maindiv).lastChild);
     }
+  }
 
+  public start() {
+    this.startDivGame(1);
+    let max = 16;
     var row = document.createElement('div')
     var nuevo_array = this.availableImages;
     var random_array = [];
@@ -79,23 +105,16 @@ export class MemoriaComponent implements OnInit {
         row = document.createElement('div')
       }
 
-      div.addEventListener('click', (event) =>{
+      div.addEventListener('click', (event) => {
         const element = (<HTMLDivElement>event.currentTarget);
-        this.comprobation(element,max);
+        this.comprobation(element, max);
       })
     }
   }
 
   public start2() {
-    (<HTMLDivElement>document.getElementById("chooseDifficults")).style.display = "none";
-    var maindiv = document.getElementById("boardgame");
-    (<HTMLDivElement>document.getElementById("score")).style.display = "flex";
-    let moves = 0;
+    this.startDivGame(2);
     let max = 16;
-    (<HTMLDivElement>maindiv).style.display = "";
-    while ((<HTMLDivElement>maindiv).firstChild) {
-        (<HTMLDivElement>maindiv).removeChild((<any>maindiv).lastChild);
-    }
     var row = document.createElement('div');
 
     var choosen = [];
@@ -128,13 +147,13 @@ export class MemoriaComponent implements OnInit {
         c = c - 20;
         var h1 = document.createElement('h1');
         h1.textContent = this.availableNames[c - 1].toUpperCase();
-        div.setAttribute('card', (c - 1)+"");
+        div.setAttribute('card', (c - 1) + "");
         card_back.appendChild(h1);
       } else {
         var image = document.createElement('img');
         const randomImg = "../../assets/imgs/Kin/" + c + ".png";
         image.setAttribute('src', randomImg);
-        div.setAttribute('card', (c - 1)+"");
+        div.setAttribute('card', (c - 1) + "");
         card_back.appendChild(image);
       }
       row.appendChild(div);
@@ -145,21 +164,14 @@ export class MemoriaComponent implements OnInit {
 
       div.addEventListener('click', (event) => {
         const element = (<HTMLDivElement>event.currentTarget);
-        this.comprobation(element,max);
+        this.comprobation(element, max);
       })
     }
   }
 
   public start3() {
-    (<HTMLDivElement>document.getElementById("chooseDifficults")).style.display = "none";
-    var maindiv = document.getElementById("boardgame");
-    (<HTMLDivElement>document.getElementById("score")).style.display = "flex";
-    let moves = 0;
+    this.startDivGame(3);
     let max = 16;
-    (<HTMLDivElement>maindiv).style.display = "";
-    while ((<HTMLDivElement>maindiv).firstChild) {
-        (<HTMLDivElement>maindiv).removeChild((<any>maindiv).lastChild);
-    }
     var row = document.createElement('div');
 
     var choosen = [];
@@ -191,14 +203,14 @@ export class MemoriaComponent implements OnInit {
       if (c > 20) {
         c = c - 20;
         var h1 = document.createElement('h1');
-        h1.textContent = c+"";
-        div.setAttribute('card', (c - 1)+"");
+        h1.textContent = c + "";
+        div.setAttribute('card', (c - 1) + "");
         card_back.appendChild(h1);
       } else {
         var image = document.createElement('img');
         const randomImg = "../../assets/imgs/Kin/" + c + ".png";
         image.setAttribute('src', randomImg);
-        div.setAttribute('card', (c - 1)+"");
+        div.setAttribute('card', (c - 1) + "");
         card_back.appendChild(image);
       }
       row.appendChild(div);
@@ -209,22 +221,15 @@ export class MemoriaComponent implements OnInit {
 
       div.addEventListener('click', (event) => {
         const element = (<HTMLDivElement>event.currentTarget);
-        this.comprobation(element,max);
+        this.comprobation(element, max);
       })
     }
 
   }
 
   public start4() {
-    (<HTMLDivElement>document.getElementById("chooseDifficults")).style.display = "none";
-    var maindiv = document.getElementById("boardgame");
-    (<HTMLDivElement>document.getElementById("score")).style.display = "flex";
-    let moves = 0;
+    this.startDivGame(4);
     let max = 16;
-    (<HTMLDivElement>maindiv).style.display = "";
-    while ((<HTMLDivElement>maindiv).firstChild) {
-        (<HTMLDivElement>maindiv).removeChild((<any>maindiv).lastChild);
-    }
     var row = document.createElement('div');
 
     var choosen = [];
@@ -256,13 +261,13 @@ export class MemoriaComponent implements OnInit {
       if (c > 20) {
         c = c - 20;
         var h1 = document.createElement('h1');
-        h1.textContent = c+"";
-        div.setAttribute('card',  (c - 1)+"");
+        h1.textContent = c + "";
+        div.setAttribute('card', (c - 1) + "");
         card_back.appendChild(h1);
       } else {
         var h1 = document.createElement('h1');
         h1.textContent = this.availableNames[c - 1].toUpperCase();
-        div.setAttribute('card', (c - 1)+"");
+        div.setAttribute('card', (c - 1) + "");
         card_back.appendChild(h1);
       }
       row.appendChild(div);
@@ -273,14 +278,14 @@ export class MemoriaComponent implements OnInit {
 
       div.addEventListener('click', (event) => {
         const element = (<HTMLDivElement>event.currentTarget);
-        this.comprobation(element,max);
+        this.comprobation(element, max);
       })
     }
 
   }
 
 
-  public comprobation(element:any,max:any){
+  public comprobation(element: any, max: any) {
     if (this.time_stopped) {
       this.intervalo = setInterval(this.setTime, 1000);
       this.time_stopped = false;
@@ -298,6 +303,8 @@ export class MemoriaComponent implements OnInit {
           this.addCorrect();
           if (document.querySelectorAll(".match").length == max) {
             this.time_stopped = true;
+            (<HTMLDivElement>document.getElementById("win")).style.display = "flex";
+            this.winAudio.play();
             clearInterval(this.intervalo)
           }
         } else {
@@ -318,10 +325,10 @@ export class MemoriaComponent implements OnInit {
   secondsLabel = document.getElementById("seconds");
   totalSeconds = 0;
   time_stopped = true;
-  intervalo:any;
+  intervalo: any;
 
   public setTime() {
-    var number_count:any = parseInt((<HTMLInputElement>document.getElementById("count")).value) + 1;
+    var number_count: any = parseInt((<HTMLInputElement>document.getElementById("count")).value) + 1;
     (<HTMLInputElement>document.getElementById("count")).value = number_count;
     var valString = (number_count % 60) + "";
     if (valString.length < 2) {
@@ -336,14 +343,15 @@ export class MemoriaComponent implements OnInit {
   }
 
   public addCorrect() {
-    var text_number:any = (<HTMLDivElement>document.getElementById("correct")).textContent;
+    var text_number: any = (<HTMLDivElement>document.getElementById("correct")).textContent;
     var number = parseInt(text_number) + 1;
-    (<HTMLDivElement>document.getElementById("correct")).textContent = number+"";
+    (<HTMLDivElement>document.getElementById("correct")).textContent = number + "";
+    this.audio.play();
   }
 
   public addError() {
-    var text_number:any = (<HTMLDivElement>document.getElementById("error")).textContent;
+    var text_number: any = (<HTMLDivElement>document.getElementById("error")).textContent;
     var number = parseInt(text_number) + 1;
-    (<HTMLDivElement>document.getElementById("error")).textContent = number+"";
+    (<HTMLDivElement>document.getElementById("error")).textContent = number + "";
   }
 }

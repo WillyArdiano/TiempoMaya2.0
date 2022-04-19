@@ -1,0 +1,56 @@
+#puntajes{
+	display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+}
+
+#tablaPuntajes{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+select, option{
+	cursor: url(../../assets/imgs/pointer2.png),auto;
+}
+
+#tablaPuntajes table{
+	margin: 1em;
+}
+
+th,td{
+	padding: 0.5em;
+}
+
+th{
+	color: white;
+}
+
+thead{
+	background-image: url(../../assets/imgs/memory.png);
+}
+
+tbody{
+	background-image: url(../../assets/imgs/memoryback.png);
+}
+
+.win{
+	height: 73%;
+    width: 100vh;
+    position: fixed;
+    z-index: 200;
+    filter: drop-shadow(2px 4px 3px black);
+    background-size: contain;
+	display: flex;
+	flex-direction: column;
+	animation: createBox 2s;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
