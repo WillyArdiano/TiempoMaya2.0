@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb45c96a-838d-4fa1-a171-66797a8125ff" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,8 @@
       <workItem from="1650122545330" duration="7327000" />
       <workItem from="1650170392003" duration="1458000" />
       <workItem from="1650240838134" duration="4466000" />
-      <workItem from="1650346782540" duration="8150000" />
+      <workItem from="1650346782540" duration="9063000" />
+      <workItem from="1650402998138" duration="3884000" />
     </task>
     <servers />
   </component>

@@ -165,8 +165,10 @@ export class CalculadoraComponent implements OnInit {
         result = this.minus(comps_operator1, comps_operator2);
         break;
       case "*":
+        result = this.multiplication();
         break;
       case "/":
+        result = this.division();
         break;
     }
     this.resutadoDecimal = this.convertirDecimal(result);
@@ -228,6 +230,61 @@ export class CalculadoraComponent implements OnInit {
         result.push(res);
       }
     }
+    return result;
+  }
+
+  public multiplication() {
+    let results :any;
+    results = this.valueOne * this.valueTwo;
+    console.log('el resultado de la multiplicacion es: ' + results);
+    return this.convertirANumeroMaya(results);
+  }
+
+  public division() {
+    let result :any;
+    if (this.valueTwo > 0) {
+      result = this.valueOne / this.valueTwo;
+    } else  {
+      alert('no se puede dividir un numero en cero');
+      result = 0;
+    }
+
+    return this.convertirANumeroMaya(result);
+
+  }
+
+  public  convertirANumeroMaya(valor:any) {
+    let residuo = 1;
+    console.log('estamos aquei');
+    var result = [];
+    let level1 = 0, level2 = 0, level3 =0, level4 = 0;
+    while (residuo > 0) {
+      console.log('entramos en el wile ' +  residuo + ' ' + valor);
+      if (valor >= 8000) {
+        level4 = (valor / 8000).valueOf();
+        console.log(level4)
+        residuo = valor % 8000;
+        valor = residuo;
+      } else if (valor >= 400) {
+        level3 = (valor / 400).valueOf();
+        console.log(level3)
+        residuo = valor % 400;
+      } else if (valor >= 20) {
+        level2 = (valor / 20).valueOf();
+        console.log(level2)
+        residuo = valor % 20;
+        valor = residuo;
+      } else {
+        level1 = valor
+        residuo = 0;
+        console.log(level1)
+      }
+    }
+    result.push(level1);
+    result.push(level2);
+    result.push(level3);
+    result.push(level4);
+
     return result;
   }
 
