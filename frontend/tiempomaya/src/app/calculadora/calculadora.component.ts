@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculadoraComponent implements OnInit {
   actual: string | undefined;
+  valueOne = 0;
+  valueTwo = 0;
 
   constructor() {
 
@@ -24,7 +26,13 @@ export class CalculadoraComponent implements OnInit {
           var can: any = document.getElementById(id);
           var ctx = can.getContext("2d");
           can.setAttribute("number", (<HTMLDivElement>event.currentTarget).getAttribute("number"));
-          this.dibujando((<HTMLDivElement>event.currentTarget).getAttribute("number"), ctx, can);
+          let numer = (<HTMLDivElement>event.currentTarget).getAttribute("number");
+          this.dibujando(numer, ctx, can);
+          let va1 = [this.returnNumber("o1l1"), this.returnNumber("o1l2"), this.returnNumber("o1l3"), this.returnNumber("o1l4")];
+          let va2 = [this.returnNumber("o2l1"), this.returnNumber("o2l2"), this.returnNumber("o2l3"), this.returnNumber("o2l4")];
+          this.valueOne = this.convertirDecimal(this.convertArray(va1));
+          this.valueTwo = this.convertirDecimal(this.convertArray(va2));
+          //this.valueOne += this.obteneiendoValorDecimal(id, numer);
           (<HTMLDivElement>document.getElementById("hide")).style.display = "none";
         });
         var can = document.createElement("canvas");
@@ -46,9 +54,11 @@ export class CalculadoraComponent implements OnInit {
     });
   }
 
+
   public selectNumber(as: string) {
     (<HTMLDivElement>document.getElementById("hide")).style.display = "flex";
     (<HTMLDivElement>document.getElementById("hide")).style.visibility = "visible";
+    console.log(as);
     this.actual = as;
   }
 
@@ -141,6 +151,7 @@ export class CalculadoraComponent implements OnInit {
     ctx.stroke();
   }
 
+  resutadoDecimal= 0;
   public resolve() {
     var comps_operator1 = [this.returnNumber("o1l1"), this.returnNumber("o1l2"), this.returnNumber("o1l3"), this.returnNumber("o1l4")]; //returns the operator1 in parts, index 0 is the section of 20^0
     var comps_operator2 = [this.returnNumber("o2l1"), this.returnNumber("o2l2"), this.returnNumber("o2l3"), this.returnNumber("o2l4")]; //returns the operator2 in parts, index 0 is the section of 20^0
@@ -154,11 +165,45 @@ export class CalculadoraComponent implements OnInit {
         result = this.minus(comps_operator1, comps_operator2);
         break;
       case "*":
+        result = this.multiplication();
         break;
       case "/":
+        result = this.division();
         break;
     }
+    this.resutadoDecimal = this.convertirDecimal(result);
+    console.log(result);
     this.drawResult(result);
+  }
+
+  public convertArray(value:any) {
+    let result:any = [];
+    for (let i = 0; i < 4; i++) {
+      result.push(parseInt(value[i]));
+    }
+    console.log(result);
+    return result;
+  }
+
+  public convertirDecimal(result:any) {
+    let valueDecimal = 0;
+    for (let i = 0; i < result.length; i++) {
+        switch (i) {
+          case 0:
+            valueDecimal = result[i];
+            break;
+          case 1:
+            valueDecimal += (result[i] * 20);
+            break;
+          case 2:
+            valueDecimal += (result[i] * 400);
+            break;
+          case 3:
+            valueDecimal += (result[i] * 8000);
+            break;
+        }
+    }
+    return valueDecimal;
   }
 
   carry = 0;
@@ -172,7 +217,7 @@ export class CalculadoraComponent implements OnInit {
     return result;
   }
 
-  
+
 
 
   public minus(comps1:any, comps2:any) {
@@ -185,6 +230,61 @@ export class CalculadoraComponent implements OnInit {
         result.push(res);
       }
     }
+    return result;
+  }
+
+  public multiplication() {
+    let results :any;
+    results = this.valueOne * this.valueTwo;
+    console.log('el resultado de la multiplicacion es: ' + results);
+    return this.convertirANumeroMaya(results);
+  }
+
+  public division() {
+    let result :any;
+    if (this.valueTwo > 0) {
+      result = this.valueOne / this.valueTwo;
+    } else  {
+      alert('no se puede dividir un numero en cero');
+      result = 0;
+    }
+
+    return this.convertirANumeroMaya(result);
+
+  }
+
+  public  convertirANumeroMaya(valor:any) {
+    let residuo = 1;
+    console.log('estamos aquei');
+    var result = [];
+    let level1 = 0, level2 = 0, level3 =0, level4 = 0;
+    while (residuo > 0) {
+      console.log('entramos en el wile ' +  residuo + ' ' + valor);
+      if (valor >= 8000) {
+        level4 = (valor / 8000).valueOf();
+        console.log(level4)
+        residuo = valor % 8000;
+        valor = residuo;
+      } else if (valor >= 400) {
+        level3 = (valor / 400).valueOf();
+        console.log(level3)
+        residuo = valor % 400;
+      } else if (valor >= 20) {
+        level2 = (valor / 20).valueOf();
+        console.log(level2)
+        residuo = valor % 20;
+        valor = residuo;
+      } else {
+        level1 = valor
+        residuo = 0;
+        console.log(level1)
+      }
+    }
+    result.push(level1);
+    result.push(level2);
+    result.push(level3);
+    result.push(level4);
+
     return result;
   }
 
@@ -234,6 +334,8 @@ export class CalculadoraComponent implements OnInit {
 
   public selectOperation() {
     (<HTMLDivElement>document.getElementById("hide2")).style.display = "flex";
+    //(<HTMLDivElement>document.getElementById("hide")).style.display = "flex";
+    (<HTMLDivElement>document.getElementById("hide2")).style.visibility = "visible";
   }
 
   public changeOperation(operation:any) {
