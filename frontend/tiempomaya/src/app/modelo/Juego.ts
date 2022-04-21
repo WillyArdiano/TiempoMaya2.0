@@ -1,10 +1,17 @@
 import { Time } from "@angular/common";
 
 export class Juego {
-    idJuego:number;
-    nombreUsuario:string;
-    punteo:number;
-    tiempo:Time;
-    fallos:number;
-    dificultad:number;
+    
+    constructor(
+        public idJuego:number,
+        public nombreUsuario:string,
+        public punteo:number,
+        public tiempo:string,
+        public fallos:number,
+        public dificultad:number,
+        public fechaHora:string      
+    ){
+
+    }
+
 }

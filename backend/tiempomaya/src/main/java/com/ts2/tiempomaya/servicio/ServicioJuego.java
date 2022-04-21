@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface ServicioJuego {
     List<Juego> obtenerJuegos();
+    List<Juego> obtenerJuegos(String nombreUsuario);
     void guardar(Juego juego);
+
 }

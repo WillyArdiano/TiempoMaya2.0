@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Concepto } from '../modelo/Concepto';
+import { Juego } from '../modelo/Juego';
 import { Usuario } from '../modelo/Usuario';
 import { ConceptoService } from '../servicio/concepto.service';
+import { JuegoService } from '../servicio/juego.service';
 import { UsuarioService } from '../servicio/usuario.service';
 
 @Component({
@@ -11,14 +13,15 @@ import { UsuarioService } from '../servicio/usuario.service';
 })
 export class TestComponent implements OnInit {
 
-  public elementos:Array<Concepto>;
-  public valor:any = 0;
+  public elementos:Array<Juego>;
+  public valor:any = "";
 
   constructor(
     private usuarioService: UsuarioService,
-    private conceptoService:ConceptoService
+    private conceptoService:ConceptoService,
+    private juegoService:JuegoService
   ) {
-    this.elementos = new Array<Concepto>();
+    this.elementos = new Array<Juego>();
   }
 
   ngOnInit(): void {
@@ -60,7 +63,27 @@ export class TestComponent implements OnInit {
       console.log(concepto);
     });
     */
+
+    /*
+    // INSERTAR JUEGO
+    let juego:Juego = new Juego(-1,"jugador_7",100,"00:01:30",2,3,"2022-04-21 12:38:33.000");
+    this.juegoService.guardar(juego).subscribe();
     
+
+    //OBTENER JUEGOS
+    this.juegoService.obtenerJuegos().subscribe(data=>{
+      this.elementos = data;
+    });
+
+  
+
+    this.juegoService.obtenerJuegosUsuario(this.valor).subscribe(data=>{
+      let juegosUsuario:Array<Juego> = new Array<Juego>();
+      juegosUsuario = data;
+      console.log(juegosUsuario);
+    });
+    */
+
   }
 
 }

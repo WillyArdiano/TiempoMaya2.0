@@ -1,16 +1,10 @@
 export class Concepto{
-    idConcepto:number;
-    palabra:string;
-    significado:string;
 
     constructor(
-        idConcepto:number,
-        palabra:string,
-        significado:string,
+        public idConcepto:number,
+        public palabra:string,
+        public significado:string,
     ){
-        this.idConcepto = idConcepto;
-        this.palabra = palabra;
-        this.significado = significado;
-
     }
+    
 }

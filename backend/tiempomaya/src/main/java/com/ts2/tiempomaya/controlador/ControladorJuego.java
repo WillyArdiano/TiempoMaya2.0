@@ -23,13 +23,13 @@ public class ControladorJuego {
     }
 
     @GetMapping("/obtenerJuegos")
-    public List<Juego> obtenerJuego(){
+    public List<Juego> obtenerJuegos(){
         return this.servicioJuego.obtenerJuegos();
     }
 
-    @GetMapping("/test")
-    public String testing(){
-        return "TESTING FROM SPRING BOOT JUEGO";
+    @GetMapping("/obtenerJuegos/{nombreUsuario}")
+    public List<Juego> obtenerJuegos(@PathVariable String nombreUsuario){
+        return this.servicioJuego.obtenerJuegos(nombreUsuario);
     }
 
 }
