@@ -13,15 +13,15 @@ export class UsuarioService {
   private url:string = "http://localhost:7000/tiempomaya/usuario";
 
   public obtenerUsuarios():Observable<Array<Usuario>>{
-    return this.http.get<Array<Usuario>>(this.url+"/usuarios");
+    return this.http.get<Array<Usuario>>(this.url+"/obtenerUsuarios");
   }
 
   public guardarUsuario(usuario:Usuario){
-    this.http.post<Usuario>(this.url+"/guardar",usuario);
+    return this.http.post<Usuario>(this.url+"/guardar",usuario);
   }
 
   public autenticar(usuario:Usuario){
-    return this.http.post<Usuario>(this.url+"/aut",usuario);
+    return this.http.post<number>(this.url+"/aut",usuario);
   }
 
 }
