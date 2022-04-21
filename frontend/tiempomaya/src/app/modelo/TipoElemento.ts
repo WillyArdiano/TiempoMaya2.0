@@ -1,4 +1,6 @@
 export class TipoElemento {
-    idTipoElemento:string;
-    descripcion:string;
+    constructor(
+        public idTipoElemento:string,
+        public descripcion:string
+    ){}
 }

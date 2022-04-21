@@ -1,7 +1,9 @@
 export class Descripcion{
-    idDescripcion:number;
-    nombreUsuario:string;
-    idConcepto:number;
-    fechaHora:Date;
-    descripcion:string;
+    constructor(
+        public idDescripcion:number,
+        public nombreUsuarioAutor:string,
+        public idConcepto:number,
+        public fechaHora:string,
+        public descripcion:string
+    ){}
 }

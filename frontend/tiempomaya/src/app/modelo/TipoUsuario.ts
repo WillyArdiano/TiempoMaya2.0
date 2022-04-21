@@ -1,5 +1,7 @@
 export class TipoUsuario {
-    idTipoUsuario:number;
-    idNombre:string;
-    idDescripcion:string;
+    constructor(
+        idTipoUsuario:number,
+        idNombre:string,
+        idDescripcion:string
+    ){}
 }

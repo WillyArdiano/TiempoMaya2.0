@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Concepto } from '../modelo/Concepto';
+import { Descripcion } from '../modelo/Descripcion';
 import { Juego } from '../modelo/Juego';
 import { Usuario } from '../modelo/Usuario';
 import { ConceptoService } from '../servicio/concepto.service';
+import { DescripcionService } from '../servicio/descripcion.service';
 import { JuegoService } from '../servicio/juego.service';
 import { UsuarioService } from '../servicio/usuario.service';
 
@@ -19,7 +21,8 @@ export class TestComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private conceptoService:ConceptoService,
-    private juegoService:JuegoService
+    private juegoService:JuegoService,
+    private descripcionService:DescripcionService
   ) {
     this.elementos = new Array<Juego>();
   }
@@ -84,6 +87,27 @@ export class TestComponent implements OnInit {
     });
     */
 
+    /*
+    //INSERTAR DESCRIPCION 
+    let descripcion:Descripcion = new Descripcion(-1,"jugador_7",3,"2022-04-21 06:38:37.000","Este es el contenido de la descripcion");
+    this.descripcionService.guardar(descripcion).subscribe();
+    
+
+    this.descripcionService.obtenerDescripcionesConcepto(this.valor).subscribe(data=>{
+      let descripciones:Array<Descripcion> = new Array<Descripcion>();
+      descripciones = data;
+      console.log(descripciones);
+    });
+    
+
+    this.descripcionService.obtenerDescripcionesUsuario(this.valor).subscribe(data=>{
+      let descripciones:Array<Descripcion> = new Array<Descripcion>();
+      descripciones = data;
+      console.log(descripciones);
+    });
+
+    */
+   
   }
 
 }

@@ -1,7 +1,9 @@
 export class Comentario {
-    id: number;
-    nombreUsuario:string;
-    contenido:string;
-    fechaHora:Date;
-    idDescripcion:number;
+    constructor(
+        public id:number,
+        public nombreUsuario:string,
+        public contenido:string,
+        public fechaHora:Date,
+        public idDescripcion:number
+    ){}
 }

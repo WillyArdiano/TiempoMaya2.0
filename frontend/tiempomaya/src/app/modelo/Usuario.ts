@@ -1,5 +1,4 @@
 export class Usuario {
-
     constructor(
         public nombreUsuario:string,
         public idTipoUsuario:number,
@@ -7,7 +6,5 @@ export class Usuario {
         public fechaNacimiento:string,
         public sexo:number,
         public direccion:string
-    ){
-    }
-    
+    ){}
 }

@@ -1,7 +1,4 @@
-import { Time } from "@angular/common";
-
 export class Juego {
-    
     constructor(
         public idJuego:number,
         public nombreUsuario:string,
@@ -10,8 +7,5 @@ export class Juego {
         public fallos:number,
         public dificultad:number,
         public fechaHora:string      
-    ){
-
-    }
-
+    ){}
 }

@@ -1,7 +1,9 @@
 export class Elemento {
-    idElemento:number;
-    tipoElemento:string;
-    nombre:string;
-    descripcion:string;
-    significado:string;
+    constructor(
+        public idElemento:number,
+        public tipoElemento:string,
+        public nombre:string,
+        public descripcion:string,
+        public significado:string
+    ){}
 }

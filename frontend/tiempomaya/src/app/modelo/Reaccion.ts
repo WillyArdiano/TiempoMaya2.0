@@ -1,7 +1,9 @@
 export class Reaccion {
-    idReaccion:number;
-    nombreUsuario:string;
-    idDescripcion:number;
-    fechaHora:Date;
-    tipoReaccion:number;
+    constructor(
+    public idReaccion:number,
+    public nombreUsuario:string,
+    public idDescripcion:number,
+    public fechaHora:Date,
+    public tipoReaccion:number
+    ){}
 }
