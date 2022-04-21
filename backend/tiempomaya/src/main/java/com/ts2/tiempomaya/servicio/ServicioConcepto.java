@@ -7,4 +7,5 @@ import java.util.List;
 public interface ServicioConcepto {
     List<Concepto> obtenerConceptos();
     void guardar(Concepto concepto);
+    Concepto obtenerConcepto(int idConcepto);
 }

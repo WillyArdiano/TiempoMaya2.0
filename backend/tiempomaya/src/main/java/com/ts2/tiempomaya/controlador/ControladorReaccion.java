@@ -1,14 +1,12 @@
 package com.ts2.tiempomaya.controlador;
 
-import com.ts2.tiempomaya.modelo.Comentario;
 import com.ts2.tiempomaya.modelo.Reaccion;
-import com.ts2.tiempomaya.servicio.ServicioComentario;
 import com.ts2.tiempomaya.servicio.ServicioReaccion;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/reaccion")
 public class ControladorReaccion {

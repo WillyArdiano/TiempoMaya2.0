@@ -1,7 +1,10 @@
 <h1>LISTA DE ELEMENTOS</h1>
-<button (click)="ejecutar()">Actualizar</button>
+<div>
+    <input type="text" [(ngModel)]="valor">
+    <button (click)="ejecutar()">Actualizar</button>
+</div>
 <div>
     <div *ngFor="let elemento of elementos">
-        <h3>{{elemento.nombreUsuario}}</h3>
+        <h3>{{elemento.palabra}}</h3>
     </div>
 </div>
