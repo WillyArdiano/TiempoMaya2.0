@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Comentario } from '../modelo/Comentario';
 import { Concepto } from '../modelo/Concepto';
 import { Descripcion } from '../modelo/Descripcion';
+import { Elemento } from '../modelo/Elemento';
 import { Juego } from '../modelo/Juego';
 import { Reaccion } from '../modelo/Reaccion';
 import { Usuario } from '../modelo/Usuario';
 import { ComentarioService } from '../servicio/comentario.service';
 import { ConceptoService } from '../servicio/concepto.service';
 import { DescripcionService } from '../servicio/descripcion.service';
+import { ElementoService } from '../servicio/elemento.service';
 import { JuegoService } from '../servicio/juego.service';
 import { ReaccionService } from '../servicio/reaccion.service';
 import { UsuarioService } from '../servicio/usuario.service';
@@ -28,7 +30,8 @@ export class TestComponent implements OnInit {
     private juegoService:JuegoService,
     private descripcionService:DescripcionService,
     private comentarioService:ComentarioService,
-    private reaccionService:ReaccionService
+    private reaccionService:ReaccionService,
+    private elementoService:ElementoService
   ) {
     this.elementos = new Array<Juego>();
   }
@@ -133,13 +136,20 @@ export class TestComponent implements OnInit {
     let reaccion:Reaccion = new Reaccion(-1,"jugador_5",3,"2022-04-21 21:44:01.000",1);
     this.reaccionService.guardar(reaccion).subscribe();
     
-
+    //REACCIONES POR DESCRIPCION
     this.reaccionService.obtenerReaccionesDescripcion(this.valor).subscribe(data=>{
       let reacciones:Array<Reaccion> = new Array<Reaccion>();
       reacciones = data;
       console.log(reacciones); 
     })
     */
+
+    //ELEMENTOS POR TIPO
+    this.elementoService.obtenerElementos(this.valor).subscribe(data=>{
+      let elementos:Array<Elemento> = new Array<Elemento>();
+      elementos = data;
+      console.log(elementos);
+    });
     
 
   }
