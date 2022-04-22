@@ -27,8 +27,4 @@ public class ControladorComentario {
         return this.servicioComentario.obtenerComentariosDescripcion(idDescripcion);
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "TESTING FROM COMENTARIO CONTROLLER";
-    }
 }

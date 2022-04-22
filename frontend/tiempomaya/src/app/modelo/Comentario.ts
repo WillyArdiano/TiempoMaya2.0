@@ -3,7 +3,7 @@ export class Comentario {
         public id:number,
         public nombreUsuario:string,
         public contenido:string,
-        public fechaHora:Date,
+        public fechaHora:string,
         public idDescripcion:number
     ){}
 }

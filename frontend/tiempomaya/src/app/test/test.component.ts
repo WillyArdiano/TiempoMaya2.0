@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Comentario } from '../modelo/Comentario';
 import { Concepto } from '../modelo/Concepto';
 import { Descripcion } from '../modelo/Descripcion';
 import { Juego } from '../modelo/Juego';
 import { Usuario } from '../modelo/Usuario';
+import { ComentarioService } from '../servicio/comentario.service';
 import { ConceptoService } from '../servicio/concepto.service';
 import { DescripcionService } from '../servicio/descripcion.service';
 import { JuegoService } from '../servicio/juego.service';
@@ -22,7 +24,8 @@ export class TestComponent implements OnInit {
     private usuarioService: UsuarioService,
     private conceptoService:ConceptoService,
     private juegoService:JuegoService,
-    private descripcionService:DescripcionService
+    private descripcionService:DescripcionService,
+    private comentarioService:ComentarioService
   ) {
     this.elementos = new Array<Juego>();
   }
@@ -107,7 +110,20 @@ export class TestComponent implements OnInit {
     });
 
     */
-   
+
+    /*
+    // INSERTAR COMENTARIO
+    let comentario:Comentario = new Comentario(-1,"jugador_6","Este es el contenido del comentario","2022-04-21 21:08:31.000",1);
+    this.comentarioService.guardar(comentario).subscribe();
+    */
+
+    // COMENTARIOS POR DESCRIPCION
+    this.comentarioService.obtenerComentariosDescripcion(this.valor).subscribe(data=>{
+      let comentarios:Array<Comentario> = new Array<Comentario>();
+      comentarios = data;
+      console.log(comentarios);
+    });
+
   }
 
 }
