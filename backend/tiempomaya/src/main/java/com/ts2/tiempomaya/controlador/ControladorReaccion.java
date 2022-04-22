@@ -27,8 +27,4 @@ public class ControladorReaccion {
         return this.servicioReaccion.obtenerReaccionesDescripcion(idDescripcion);
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "TESTING FROM REACCION CONTROLLER";
-    }
 }

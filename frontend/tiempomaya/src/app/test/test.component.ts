@@ -3,11 +3,13 @@ import { Comentario } from '../modelo/Comentario';
 import { Concepto } from '../modelo/Concepto';
 import { Descripcion } from '../modelo/Descripcion';
 import { Juego } from '../modelo/Juego';
+import { Reaccion } from '../modelo/Reaccion';
 import { Usuario } from '../modelo/Usuario';
 import { ComentarioService } from '../servicio/comentario.service';
 import { ConceptoService } from '../servicio/concepto.service';
 import { DescripcionService } from '../servicio/descripcion.service';
 import { JuegoService } from '../servicio/juego.service';
+import { ReaccionService } from '../servicio/reaccion.service';
 import { UsuarioService } from '../servicio/usuario.service';
 
 @Component({
@@ -25,7 +27,8 @@ export class TestComponent implements OnInit {
     private conceptoService:ConceptoService,
     private juegoService:JuegoService,
     private descripcionService:DescripcionService,
-    private comentarioService:ComentarioService
+    private comentarioService:ComentarioService,
+    private reaccionService:ReaccionService
   ) {
     this.elementos = new Array<Juego>();
   }
@@ -115,7 +118,7 @@ export class TestComponent implements OnInit {
     // INSERTAR COMENTARIO
     let comentario:Comentario = new Comentario(-1,"jugador_6","Este es el contenido del comentario","2022-04-21 21:08:31.000",1);
     this.comentarioService.guardar(comentario).subscribe();
-    */
+    
 
     // COMENTARIOS POR DESCRIPCION
     this.comentarioService.obtenerComentariosDescripcion(this.valor).subscribe(data=>{
@@ -123,6 +126,21 @@ export class TestComponent implements OnInit {
       comentarios = data;
       console.log(comentarios);
     });
+    */
+
+    /*
+    //INSERTAR REACCION
+    let reaccion:Reaccion = new Reaccion(-1,"jugador_5",3,"2022-04-21 21:44:01.000",1);
+    this.reaccionService.guardar(reaccion).subscribe();
+    
+
+    this.reaccionService.obtenerReaccionesDescripcion(this.valor).subscribe(data=>{
+      let reacciones:Array<Reaccion> = new Array<Reaccion>();
+      reacciones = data;
+      console.log(reacciones); 
+    })
+    */
+    
 
   }
 
