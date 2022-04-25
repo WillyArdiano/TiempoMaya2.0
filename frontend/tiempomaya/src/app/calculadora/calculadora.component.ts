@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import  { CalculadoraMaya } from '../model-calculadora/calculadora-maya.model';
 
 @Component({
   selector: 'app-calculadora',
@@ -9,9 +10,10 @@ export class CalculadoraComponent implements OnInit {
   actual: string | undefined;
   valueOne = 0;
   valueTwo = 0;
+  @Input()calculadora!:CalculadoraMaya;
 
   constructor() {
-
+    this.calculadora = new CalculadoraMaya();
   }
   ngOnInit():void {
     var filas: any = document.querySelectorAll(".row");
@@ -30,8 +32,8 @@ export class CalculadoraComponent implements OnInit {
           this.dibujando(numer, ctx, can);
           let va1 = [this.returnNumber("o1l1"), this.returnNumber("o1l2"), this.returnNumber("o1l3"), this.returnNumber("o1l4")];
           let va2 = [this.returnNumber("o2l1"), this.returnNumber("o2l2"), this.returnNumber("o2l3"), this.returnNumber("o2l4")];
-          this.valueOne = this.convertirDecimal(this.convertArray(va1));
-          this.valueTwo = this.convertirDecimal(this.convertArray(va2));
+          this.valueOne = this.calculadora.decimal(this.convertArray(va1));
+          this.valueTwo = this.calculadora.decimal(this.convertArray(va2));
           //this.valueOne += this.obteneiendoValorDecimal(id, numer);
           (<HTMLDivElement>document.getElementById("hide")).style.display = "none";
         });
@@ -159,19 +161,19 @@ export class CalculadoraComponent implements OnInit {
 
     switch ((<HTMLDivElement>document.getElementById("operator")).textContent) {
       case "+":
-        result = this.plus(comps_operator1, comps_operator2);
+        result = this.calculadora.plus(comps_operator1, comps_operator2);
         break;
       case "-":
-        result = this.minus(comps_operator1, comps_operator2);
+        result = this.calculadora.minus(this.valueOne, this.valueTwo);
         break;
       case "*":
-        result = this.multiplication();
+        result = this.calculadora.multiplication(this.valueOne, this.valueTwo);
         break;
       case "/":
-        result = this.division();
+        result = this.calculadora.division(this.valueOne, this.valueTwo);
         break;
     }
-    this.resutadoDecimal = this.convertirDecimal(result);
+    this.resutadoDecimal = this.calculadora.decimal(result);
     console.log(result);
     this.drawResult(result);
   }
@@ -183,136 +185,6 @@ export class CalculadoraComponent implements OnInit {
     }
     console.log(result);
     return result;
-  }
-
-  public convertirDecimal(result:any) {
-    let valueDecimal = 0;
-    for (let i = 0; i < result.length; i++) {
-        switch (i) {
-          case 0:
-            valueDecimal = result[i];
-            break;
-          case 1:
-            valueDecimal += (result[i] * 20);
-            break;
-          case 2:
-            valueDecimal += (result[i] * 400);
-            break;
-          case 3:
-            valueDecimal += (result[i] * 8000);
-            break;
-        }
-    }
-    return valueDecimal;
-  }
-
-  carry = 0;
-  public plus(comps1:any, comps2:any) {
-    var result = [];
-    this.carry = 0;
-    result.push(this.moreThan19(comps1[0], comps2[0]));
-    result.push(this.moreThan19(comps1[1], comps2[1]));
-    result.push(this.moreThan19(comps1[2], comps2[2]));
-    result.push(this.moreThan19(comps1[3], comps2[3]));
-    return result;
-  }
-
-
-
-
-  public minus(comps1:any, comps2:any) {
-    var result = [];
-    this.carry = 0;
-    for (let i = 0; i < comps1.length; i++) {
-      var next = ((i + 1) < comps1.length) ? comps1[i + 1] : 0;
-      var res = this.minusOperation(comps1[i], comps2[i], next);
-      if (res != -1) {
-        result.push(res);
-      }
-    }
-    return result;
-  }
-
-  public multiplication() {
-    let results :any;
-    results = this.valueOne * this.valueTwo;
-    console.log('el resultado de la multiplicacion es: ' + results);
-    return this.convertirANumeroMaya(results);
-  }
-
-  public division() {
-    let result :any;
-    if (this.valueTwo > 0) {
-      result = this.valueOne / this.valueTwo;
-    } else  {
-      alert('no se puede dividir un numero en cero');
-      result = 0;
-    }
-
-    return this.convertirANumeroMaya(result);
-
-  }
-
-  public  convertirANumeroMaya(valor:any) {
-    let residuo = 1;
-    console.log('estamos aquei');
-    var result = [];
-    let level1 = 0, level2 = 0, level3 =0, level4 = 0;
-    while (residuo > 0) {
-      console.log('entramos en el wile ' +  residuo + ' ' + valor);
-      if (valor >= 8000) {
-        level4 = (valor / 8000).valueOf();
-        console.log(level4)
-        residuo = valor % 8000;
-        valor = residuo;
-      } else if (valor >= 400) {
-        level3 = (valor / 400).valueOf();
-        console.log(level3)
-        residuo = valor % 400;
-      } else if (valor >= 20) {
-        level2 = (valor / 20).valueOf();
-        console.log(level2)
-        residuo = valor % 20;
-        valor = residuo;
-      } else {
-        level1 = valor
-        residuo = 0;
-        console.log(level1)
-      }
-    }
-    result.push(level1);
-    result.push(level2);
-    result.push(level3);
-    result.push(level4);
-
-    return result;
-  }
-
-  public minusOperation(number1:any, number2:any, next:any) {
-    var tmp = parseInt(number1) - parseInt(number2) + this.carry;
-    if (tmp < 0) {
-      if (next > 0) {
-        tmp += 20;
-        this.carry = -1;
-        return tmp;
-      } else {
-        return 0;
-      }
-    } else {
-      this.carry = 0;
-      return tmp;
-    }
-  }
-
-  public moreThan19(number1:any, number2:any) {
-    var tmp = parseInt(number1) + parseInt(number2) + this.carry;
-    if (tmp > 19) {
-      this.carry = 1;
-      return tmp % 20;
-    } else {
-      this.carry = 0;
-      return tmp;
-    }
   }
 
   public returnNumber(id:any) {
@@ -330,7 +202,6 @@ export class CalculadoraComponent implements OnInit {
       alert("Elige algún numero")
     }
   }
-
 
   public selectOperation() {
     (<HTMLDivElement>document.getElementById("hide2")).style.display = "flex";
