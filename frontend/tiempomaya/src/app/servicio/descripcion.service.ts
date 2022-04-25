@@ -23,4 +23,8 @@ export class DescripcionService {
     return this.http.get<Array<Descripcion>>(this.url+"/descripciones/usuario/"+nombreUsuario);
   }
 
+  public obtenerDescripciones(){
+    return this.http.get<Array<Descripcion>>(this.url+"/descripciones/");
+  }
+
 }

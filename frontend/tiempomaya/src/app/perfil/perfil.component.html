@@ -2,11 +2,10 @@
 <div class="container-table">
 	<div class="perfil-data">
 		<div class="mayan-profile">
-			<img class="mayan-level level" src="../../assets/imgs/face1.png" alt="">
+			<img class="mayan-level level" [src]="imagen" alt="">
 		</div>
-		<h1>name-placeholder</h1>
-		<h3>@username-placeholder</h3>
-		<h5>birthday-placeholder</h5>
+		<h1>{{usuario.nombreUsuario}}</h1>
+		<h5>{{usuario.fechaNacimiento}}</h5>
 		<div class="container-profile-elements">
 			<div class="profile-element">
 				<label for="reputation">700</label>
@@ -20,15 +19,15 @@
 	</div>
 	<div class="perfil-content">
 		<div class="publication-concept">
-			<input type="text" placeholder="Escribe la palabra">
-			<textarea name="concepto" id="concepto" cols="30" rows="3" placeholder="Describe tu concepto"></textarea>
-			<button>PUBLICAR</button>
+			<input id="concepto" type="text" placeholder="Escribe la palabra">
+			<textarea name="concepto" id="descripcion" cols="30" rows="3" placeholder="Describe tu concepto"></textarea>
+			<button (click)="publicar()">PUBLICAR</button>
 		</div>
 		<h1>TUS PUBLICACIONES</h1>
-		<div class="publication-concept">
-			<h5>date-placeholder</h5>
+		<div *ngFor="let publicacion of publicaciones" class="publication-concept">
+			<h5>{{publicacion.fechaHora}}</h5>
 			<div class="container-profile-elements oriented-left">
-				<h1>concept</h1>
+				<h1>{{publicacion.idConcepto}}</h1>
 				<div class="profile-element">
 					<label for="reputation">700</label>
 					<img class="mayan-level" src="../../assets/imgs/cacao.png" alt="">
@@ -39,7 +38,7 @@
 				</div>
 				<a href="#" style="font-size: 0.5em;text-decoration: dashed;">Ver comentarios(#)</a>
 			</div>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ullam blanditiis ipsam asperiores voluptatem excepturi optio voluptatibus debitis. Ducimus, quisquam. Corporis ipsam maxime iure similique neque reprehenderit sunt minima quaerat.</p>
+			<p>{{publicacion.descripcion}}</p>
 		</div>
 	</div>
 </div>

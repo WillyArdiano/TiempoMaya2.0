@@ -29,4 +29,9 @@ public class ServicioJPADescripcion implements ServicioDescripcion {
     public void guardar(Descripcion descripcion) {
         this.repositorioDescripcion.save(descripcion);
     }
+
+    @Override
+    public List<Descripcion> obtenerDescripciones() {
+        return this.repositorioDescripcion.findAll();
+    }
 }

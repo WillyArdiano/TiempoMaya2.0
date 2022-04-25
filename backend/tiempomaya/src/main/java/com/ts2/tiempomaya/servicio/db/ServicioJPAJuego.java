@@ -27,6 +27,11 @@ public class ServicioJPAJuego implements ServicioJuego {
     }
 
     @Override
+    public List<Juego> obtenerJuegos(int dificultad) {
+        return this.repositorioJuego.findAllByDificultad(dificultad);
+    }
+
+    @Override
     public void guardar(Juego juego) {
         this.repositorioJuego.save(juego);
     }

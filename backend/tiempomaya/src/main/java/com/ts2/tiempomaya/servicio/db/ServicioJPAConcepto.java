@@ -27,7 +27,7 @@ public class ServicioJPAConcepto implements ServicioConcepto {
     }
 
     @Override
-    public Concepto obtenerConcepto(int idConcepto) {
-        return this.repositorioConcepto.findByIdConcepto(idConcepto);
+    public Concepto obtenerConcepto(String palabra) {
+        return this.repositorioConcepto.findByPalabra(palabra);
     }
 }
