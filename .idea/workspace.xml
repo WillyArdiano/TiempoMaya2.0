@@ -6,12 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="eb45c96a-838d-4fa1-a171-66797a8125ff" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tiempomaya/src/app/calculadora/calculadora.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +52,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/tiempomaya/src/app" />
+    </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.calculadora-maya.component.html">
     <configuration name="All in TiempoMaya2.0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -88,6 +99,12 @@
       <workItem from="1650240838134" duration="4466000" />
       <workItem from="1650346782540" duration="9063000" />
       <workItem from="1650402998138" duration="3884000" />
+      <workItem from="1650408252336" duration="2995000" />
+      <workItem from="1650519418421" duration="294000" />
+      <workItem from="1650519742629" duration="4140000" />
+      <workItem from="1650570636278" duration="3418000" />
+      <workItem from="1650601982842" duration="3645000" />
+      <workItem from="1650861720853" duration="2492000" />
     </task>
     <servers />
   </component>
