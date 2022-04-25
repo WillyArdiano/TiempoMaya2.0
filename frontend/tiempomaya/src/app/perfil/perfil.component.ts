@@ -19,6 +19,7 @@ export class PerfilComponent implements OnInit {
   descripcion:string = "";
   usuario:any;
   imagen:string = "../../assets/imgs/face1.png";
+  tipo:string = "Aldeano";
   publicaciones:Array<Descripcion>;
 
   constructor(public router:Router, private cookies:CookieService, private usuarioService:UsuarioService, private conceptoService:ConceptoService, private descripcionService:DescripcionService) {
@@ -31,7 +32,15 @@ export class PerfilComponent implements OnInit {
         if(data){
           this.usuario = data;
           this.imagen = "../../assets/imgs/face"+(this.usuario.idTipoUsuario-3)+".png";
-          console.log("todo correcto");
+          if ((this.usuario.idTipoUsuario-3)==1){
+            this.tipo = "IMPOSTOR";
+          } else if ((this.usuario.idTipoUsuario-3)==1){
+            this.tipo = "ALDEANO";
+          } else if ((this.usuario.idTipoUsuario-3)==1){
+            this.tipo = "SACERDOTE";
+          } else if ((this.usuario.idTipoUsuario-3)==1){
+            this.tipo = "HALACH UICH";
+          }
           this.actualizarDescripciones();
         }
       });
