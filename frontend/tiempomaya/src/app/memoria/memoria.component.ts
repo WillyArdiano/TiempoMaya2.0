@@ -51,9 +51,9 @@ export class MemoriaComponent implements OnInit {
   }
 
 
-  public startDivGame(game:number){
-    var imgs:any = document.querySelector("#difficultActualGame")?.querySelectorAll("img");
-    (<HTMLDivElement>document.querySelector("#difficultActualGame")).setAttribute("dificultad",game+"");
+  public startDivGame(game: number) {
+    var imgs: any = document.querySelector("#difficultActualGame")?.querySelectorAll("img");
+    (<HTMLDivElement>document.querySelector("#difficultActualGame")).setAttribute("dificultad", game + "");
     imgs.forEach((element: HTMLImageElement) => {
       element.classList.remove("desaturate");
     });
@@ -327,11 +327,14 @@ export class MemoriaComponent implements OnInit {
             let seconds = parseInt(sec as string);
             let errors = parseInt(err as string);
             let correct = parseInt(cor as string);
-            seconds += minutes*60;
-            let time_perfect = 100;
-            errors = correct / errors;
-            time_perfect = time_perfect - (errors*seconds);
-            (<HTMLSpanElement>document.getElementById("points")).textContent = time_perfect+"";
+            seconds += minutes * 60;
+            let time_perfect = 1000;
+            errors = Math.pow(correct, 1 / errors);
+            time_perfect = Math.floor(time_perfect - (errors * seconds * 1.25));
+            (<HTMLSpanElement>document.getElementById("points")).textContent = time_perfect + "";
+            this.availableImages = ['imix', 'ik', 'akbal', 'kan', 'chikchan', 'kimi', 'manik', 'lamat', 'muluk', 'ok', 'chuen', 'eb', 'ben', 'ix', 'men', 'kib', 'kaban', 'etznab', 'kauak', 'ajau'];
+            this.availableImages2 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
+            this.availableNames = ['imix', 'ik\'', 'ak\'bal', 'k\'an', 'chikchan', 'kimi', 'manik', 'lamat', 'muluk', 'ok', 'chuen', 'eb', 'ben', 'ix', 'men', 'k\'ib', 'kaban', 'etznab', 'kauak', 'ajau'];
             clearInterval(this.intervalo);
             let dificultad = (<HTMLDivElement>document.querySelector("#difficultActualGame")).getAttribute("dificultad");
             let juego:Juego = new Juego(-1,this.cookies.get("usuario"),time_perfect,("00:"+min+":"+sec),parseInt(err as string),parseInt(dificultad as string),new Date().toLocaleString());
