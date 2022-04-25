@@ -22,5 +22,9 @@ export class JuegoService {
   public obtenerJuegosUsuario(nombreUsuario:string){
     return this.http.get<Array<Juego>>(this.url+"/obtenerJuegos/"+nombreUsuario);
   }
+  
+  public obtenerJuegosDificultad(dificultad:number){
+    return this.http.get<Array<Juego>>(this.url+"/obtenerJuegos/dificultad/"+dificultad);
+  }
 
 }

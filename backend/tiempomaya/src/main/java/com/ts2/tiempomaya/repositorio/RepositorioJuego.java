@@ -8,5 +8,6 @@ import java.util.List;
 public interface RepositorioJuego extends JpaRepository<Juego,Integer> {
 
     List<Juego> findAllByNombreUsuario(String nombreUsuario);
+    List<Juego> findAllByDificultad(int dificultad);
 
 }

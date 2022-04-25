@@ -32,4 +32,9 @@ public class ControladorJuego {
         return this.servicioJuego.obtenerJuegos(nombreUsuario);
     }
 
+    @GetMapping("/obtenerJuegos/dificultad/{dificultad}")
+    public List<Juego> obtenerJuegos(@PathVariable int dificultad){
+        return this.servicioJuego.obtenerJuegos(dificultad);
+    }
+
 }

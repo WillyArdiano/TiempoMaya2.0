@@ -9,7 +9,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Juego")
@@ -37,7 +36,7 @@ public class Juego {
     private int dificultad;
     @Column(name = "fecha_hora")
     @JsonProperty("fechaHora")
-    @JsonFormat(pattern= Fecha.FORMATO_FECHA)
+    @JsonFormat(pattern= Fecha.FORMATO_FECHA_2)
     private Timestamp fechaHora;
 
 

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { Juego } from '../modelo/Juego';
+import { JuegoService } from '../servicio/juego.service';
 
 @Component({
   selector: 'app-memoria',
@@ -12,9 +16,19 @@ export class MemoriaComponent implements OnInit {
   availableImages2 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
   availableNames = ['imix', 'ik\'', 'ak\'bal', 'k\'an', 'chikchan', 'kimi', 'manik', 'lamat', 'muluk', 'ok', 'chuen', 'eb', 'ben', 'ix', 'men', 'k\'ib', 'kaban', 'etznab', 'kauak', 'ajau'];
   card_up = 0;
+  juegos:Array<Juego>;
+  juegosGlobales:Array<Juego>;
+  dificultad = 1;
 
-  constructor() {
-
+  constructor(private servicioJuego:JuegoService, private cookies:CookieService, private router:Router) {
+    this.juegos = new Array<Juego>();
+    this.juegosGlobales = new Array<Juego>();
+    this.servicioJuego.obtenerJuegosUsuario(cookies.get("usuario")).subscribe(data=>{
+      this.juegos = data;
+    });
+    this.servicioJuego.obtenerJuegosDificultad(this.dificultad).subscribe(data=>{
+      this.juegosGlobales = data;
+    });
   }
 
   ngOnInit(): void {
@@ -319,6 +333,9 @@ export class MemoriaComponent implements OnInit {
             time_perfect = time_perfect - (errors*seconds);
             (<HTMLSpanElement>document.getElementById("points")).textContent = time_perfect+"";
             clearInterval(this.intervalo);
+            let dificultad = (<HTMLDivElement>document.querySelector("#difficultActualGame")).getAttribute("dificultad");
+            let juego:Juego = new Juego(-1,this.cookies.get("usuario"),time_perfect,("00:"+min+":"+sec),parseInt(err as string),parseInt(dificultad as string),new Date().toLocaleString());
+            this.servicioJuego.guardar(juego).subscribe();
           }
         } else {
           this.addError();
@@ -332,6 +349,16 @@ export class MemoriaComponent implements OnInit {
         element.classList.add("up");
       }
     }
+  }
+
+  public verPuntajes(){
+    this.router.navigateByUrl("/memoria");
+  }
+
+  public updateJuegosGlobales(){
+    this.servicioJuego.obtenerJuegosDificultad(this.dificultad).subscribe(data=>{
+      this.juegosGlobales = data;
+    });
   }
 
   minutesLabel = document.getElementById("minutes");
