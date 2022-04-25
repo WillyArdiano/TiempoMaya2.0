@@ -7,6 +7,11 @@ import { MemoriaComponent } from './memoria/memoria.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { PublicacionComponent } from './publicacion/publicacion.component';
+import { BibliotecaComponent } from './biblioteca/biblioteca.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -14,13 +19,17 @@ import { PerfilComponent } from './perfil/perfil.component';
     MemoriaComponent,
     CalculadoraComponent,
     HomeComponent,
-    PerfilComponent
+    PerfilComponent,
+    LoginComponent,
+    RegistroComponent,
+    PublicacionComponent,
+    BibliotecaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

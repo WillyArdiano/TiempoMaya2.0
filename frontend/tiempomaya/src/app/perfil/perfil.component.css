@@ -13,7 +13,70 @@
 }
 
 .mayan-profile{
-	background-image: url(../../assets/imgs/memoryback.png);
+	/*background-image: url(../../assets/imgs/memoryback.png);*/
+	border-radius: 1em;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	padding: 0.5em;
+}
+
+.mayan-profile img{
+	width: 100%;
+	height: auto;
+}
+
+.container-table{
+	display: grid;
+	grid-template-columns: 20% 80%;
+}
+
+.mayan-level{
+	
+	width: 2em;
+	height: 2em;
+	padding: 2px;
+}
+
+h1{
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.level{
+	background-color: rgb(22, 22, 22);
+	border-radius: 50%;
+	width: 2.5em;
+	height: 2.5em;
+}
+
+.gold{
+	border: 5px gold solid;
+}
+.perfil-data{
+	background-image: url(../../assets/imgs/rock.png);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+	padding-top: 2em;    
+	height: fit-content;
+    padding-bottom: 2em;
+	position: sticky;
+}
+
+.mayan-profile{
+	/*background-image: url(../../assets/imgs/memoryback.png);*/
 	border-radius: 1em;
 	width: 50%;
 	display: flex;
@@ -93,9 +156,9 @@ h1{
 
 .publication-concept label{
 	font-weight: bold;
-	color: white;
-	background-color: black;
+	color: gold;
 	text-align: center;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 textarea{
@@ -150,4 +213,138 @@ h1,label{
 
 p, h5{
 	font-weight: bold;
+}
+
+.publication-concept p{
+	
+	font-family: 'Josefin Sans', sans-serif !important;
+	font-weight: 900;
+}
+
+.mayan-level:hover, .reputation:hover{
+	cursor: url(../../assets/imgs/pointer2.png),auto;
+}
+
+.forClick:hover{
+	transform: scale(1.7);
+}
+
+.clicked{
+	transform: scale(1.7);
+}
+
+.notClicked{
+	filter: saturate(0.1);
+}
+
+@keyframes buttonApparence{
+	0%{
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(1.5);
+	}
+}
+p{
+	margin-top: 1em;
+}
+
+.selector{
+	display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+	background-image: url(../../assets/imgs/rock.png);
+	border-bottom-left-radius: 1em;
+	border-bottom-right-radius: 1em;
+}
+
+.selector input, .selector select{
+	width: 80%;
+}
+
+.community{
+	width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+@media (max-width: 600px) {
+	.selector{
+		width: 100%;
+	}
+	.community{
+		width: 100%;
+	}
+  }
+
+  #loadingCommunity{
+	display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+	margin-top: 2em;
+	color: yellow;
+  }
+
+  .publication-concept{
+	  animation: 0.5s createBox;
+	  filter: drop-shadow(2px 4px 6px black);
+  }
+
+  #loading{
+	  width: 20%;
+	  height: auto;
+  }
+
+  .name-author{
+	display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap
+  }
+
+  .container-author{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  }
+
+  .name-author a{
+	  text-decoration: none;
+	  color: yellow;
+  }
+
+  .name-author img{
+	background-color: black;
+	border-radius: 50%;
+	width: auto;
+	padding: 0;
+}
+
+.publication-concept{
+	border-radius: 1em;
+	border: 0.2em solid gold;
+}
+
+p, h5, a{
+	color: aliceblue;
+}
+
+p{
+	text-align: justify;
 }

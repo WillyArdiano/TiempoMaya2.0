@@ -244,3 +244,44 @@ p{
 	  width: 20%;
 	  height: auto;
   }
+
+  .name-author{
+	display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap
+  }
+
+  .container-author{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  }
+
+  .name-author a{
+	  text-decoration: none;
+	  color: yellow;
+  }
+
+  .name-author img{
+	background-color: black;
+	border-radius: 50%;
+	width: auto;
+	padding: 0;
+}
+
+.publication-concept{
+	border-radius: 1em;
+	border: 0.2em solid gold;
+}
+
+p, h5, a{
+	color: aliceblue;
+}
+
+p{
+	text-align: justify;
+}

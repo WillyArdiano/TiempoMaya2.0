@@ -9,8 +9,11 @@
 	margin: 0;
 	height: 10vh;
 	border-bottom: 4px solid black;
+	
+    position: sticky;
+    top: 0;
+    z-index: 5000;
 }
-
 
 .component-banner{
 	display: flex;
@@ -38,7 +41,7 @@
 }
 
 .comp-banner:hover{
-	background-color: aqua;
+	background-image: url(../assets/imgs/rock2.png);
 	padding-left: 1em;
 	border-radius: 1em;
 }
@@ -53,6 +56,7 @@
 
 .component-banner h1 {
 	margin: 0.4em;
+	color: #f1e0c1;
 }
 
 .comp-banner{
@@ -74,3 +78,14 @@
 		transform:translateX(0);
 	}
 }
+
+.menu-icon{
+	filter: invert(90%) sepia(32%) saturate(252%) hue-rotate(338deg) brightness(98%) contrast(93%);
+}
+
+@media (max-width: 755px) {
+	.banner{
+		height: auto;
+		justify-content: center;
+	}
+  }

@@ -1,0 +1,42 @@
+.duplex-container{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	flex-wrap: wrap;
+}
+
+.container{
+	display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	height: 80vh;
+}
+
+.duplex-container div{
+	display: flex;
+	flex-direction: column;
+	background-image: url(../../assets/imgs/rock.png);
+	border-top-left-radius: 1em;
+	border-bottom-left-radius: 1em;
+	height: 85%;
+	align-items: stretch;
+	align-content: center;
+	justify-content: center;
+}
+
+.duplex-container div h1, .duplex-container div input, .duplex-container div button{
+	margin: 1em;
+	text-align: center;
+}
+
+
+
+.duplex-container img{
+	height: 85%;
+	width: auto;
+	padding: 0;
+}
