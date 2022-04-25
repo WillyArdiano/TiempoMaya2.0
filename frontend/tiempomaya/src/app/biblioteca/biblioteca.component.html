@@ -7,16 +7,27 @@
 			<span class="back-button">BUSCAR</span>
 			<button type="button" name="Hover">REVISAR BIBLIOTECA</button>
 		</div>
+		<label for="elementos" style="text-align: center;color: yellow;font-size: 2em; margin-top: 1em;">CALENDARIO</label>
+		<select name="elementos" id="selectElementos" style="margin-bottom: 1em;" [(ngModel)]="tipoElemento" (change)="actualizarElementos()">
+			<option value="kin" selected>HAAB - KINES</option>
+			<option value="Uinal">HAAB - UINALES</option>
+			<option value="Nahual">CHOLQ'IJ - NAHUALES</option>
+			<option value="Energia">CHOLQ'IJ - ENERGIAS</option>
+		</select>
 	</div>
 	<h1 style="margin-top: 1em;">BIBLIOTECA MAYA</h1>
 	<div class="community">
-		<div class="publication-concept">
+		<div *ngFor="let elemento of elementos" class="publication-concept">
 			<div class="container-profile-elements oriented-left">
-			<h1>concept</h1>
+				<h1>{{elemento.nombre}}</h1>
 			</div>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ullam blanditiis ipsam asperiores
-				voluptatem excepturi optio voluptatibus debitis. Ducimus, quisquam. Corporis ipsam maxime iure similique
-				neque reprehenderit sunt minima quaerat.</p>
+			<h2>
+				Significado
+			</h2>
+			<h3>
+				{{elemento.significado}}
+			</h3>
+			<p>{{elemento.descripcion}}</p>
 		</div>
 	</div>
 

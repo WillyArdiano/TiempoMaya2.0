@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Elemento } from '../modelo/Elemento';
+import { ElementoService } from '../servicio/elemento.service';
 
 @Component({
   selector: 'app-biblioteca',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BibliotecaComponent implements OnInit {
 
-  constructor() { }
+  tipoElemento = "";
+  elementos:Array<Elemento>;
+
+  constructor(private servicioElemento:ElementoService) {
+    this.elementos = new Array();
+    this.actualizarElementos();
+  }
 
   ngOnInit(): void {
+  }
+
+  public actualizarElementos(){
+    this.servicioElemento.obtenerElementos(this.tipoElemento).subscribe(data=>{
+      this.elementos = data;
+    });
   }
 
 }
