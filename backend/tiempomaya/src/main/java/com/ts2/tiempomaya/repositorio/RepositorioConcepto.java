@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositorioConcepto extends JpaRepository<Concepto,Integer> {
 
-    Concepto findByIdConcepto(int idConcepto);
+    Concepto findByPalabra(String palabra);
 
 }

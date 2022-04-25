@@ -25,10 +25,10 @@ public class Descripcion {
     @Column(name = "nombre_usuario_autor")
     private String nombreUsuarioAutor;
     @Column(name = "id_concepto")
-    private int idConcepto;
+    private String idConcepto;
     @Column(name = "fecha_hora")
     @JsonProperty("fechaHora")
-    @JsonFormat(pattern= Fecha.FORMATO_FECHA_1)
+    @JsonFormat(pattern= Fecha.FORMATO_FECHA_2)
     private Timestamp fechaHora;
     @Column(name = "descripcion")
     private String descripcion;

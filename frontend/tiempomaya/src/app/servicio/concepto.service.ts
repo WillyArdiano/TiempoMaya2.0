@@ -23,4 +23,8 @@ export class ConceptoService {
     return this.http.get<Concepto>(this.url+"/"+idConcepto);
   }
 
+  public obtenerConceptoPalabra(palabra:string){
+    return this.http.get<Concepto>(this.url+"/palabra/"+palabra);
+  }
+
 }

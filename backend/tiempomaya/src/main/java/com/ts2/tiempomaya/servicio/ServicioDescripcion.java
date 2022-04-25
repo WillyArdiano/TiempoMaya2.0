@@ -7,6 +7,7 @@ import java.util.List;
 public interface ServicioDescripcion {
 
     List<Descripcion> obtenerDescripcionesConcepto(int idConcepto);
+    List<Descripcion> obtenerDescripciones();
     List<Descripcion> obtenerDescripcionesUsuario(String nombreUsuario);
     void guardar(Descripcion descripcion);
 

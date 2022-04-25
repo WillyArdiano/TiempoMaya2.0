@@ -32,4 +32,9 @@ public class ControladorDescripcion {
         return this.servicioDescripcion.obtenerDescripcionesUsuario(nombreUsuario);
     }
 
+    @GetMapping("/descripciones/")
+    public List<Descripcion> obtenerDescripciones(){
+        return this.servicioDescripcion.obtenerDescripciones();
+    }
+
 }

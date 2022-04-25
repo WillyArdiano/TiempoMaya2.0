@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Concepto } from '../modelo/Concepto';
+import { Descripcion } from '../modelo/Descripcion';
+import { Usuario } from '../modelo/Usuario';
+import { ConceptoService } from '../servicio/concepto.service';
+import { DescripcionService } from '../servicio/descripcion.service';
+import { UsuarioService } from '../servicio/usuario.service';
 
 @Component({
   selector: 'app-perfil',
@@ -9,15 +15,57 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor(public router:Router, private cookies:CookieService) { 
+  concepto:string = "";
+  descripcion:string = "";
+  usuario:any;
+  imagen:string = "../../assets/imgs/face1.png";
+  publicaciones:Array<Descripcion>;
+
+  constructor(public router:Router, private cookies:CookieService, private usuarioService:UsuarioService, private conceptoService:ConceptoService, private descripcionService:DescripcionService) {
+    this.publicaciones = new Array();
+    this.usuario = new Usuario("",-1,"","",-1,""); 
     if (!this.cookies.get("usuario")){
       this.router.navigateByUrl("/login");
     } else {
-      console.log("todo correcto");
+      this.usuarioService.obtenerUsuario(this.cookies.get("usuario")).subscribe(data=>{
+        if(data){
+          this.usuario = data;
+          this.imagen = "../../assets/imgs/face"+(this.usuario.idTipoUsuario-3)+".png";
+          console.log("todo correcto");
+          this.actualizarDescripciones();
+        }
+      });
     } 
   }
 
   ngOnInit(): void {
   }
 
+  public publicar(){
+    let conceptoM = (<HTMLInputElement>document.querySelector("#concepto")).value.toUpperCase();
+    let desc = (<HTMLTextAreaElement>document.querySelector("#descripcion")).value
+    this.conceptoService.obtenerConceptoPalabra(conceptoM).subscribe(data=>{
+      if(data){
+        this.guardarDescripcion(conceptoM,desc);
+      }else{
+        let concepto:Concepto = new Concepto(conceptoM,"");
+        this.conceptoService.guardar(concepto).subscribe(data=>{
+          this.guardarDescripcion(conceptoM,desc);
+        });
+      }
+      alert("Descripción publicada");
+    });
+  }
+
+  public guardarDescripcion(conceptoM:string,desc:string){
+    this.descripcionService.guardar(new Descripcion(-1,this.cookies.get("usuario"),conceptoM,new Date().toLocaleString(),desc)).subscribe(data=>{
+      this.actualizarDescripciones();
+    });
+  }
+
+  public actualizarDescripciones(){
+    this.descripcionService.obtenerDescripcionesUsuario(this.cookies.get("usuario")).subscribe(data=>{
+      this.publicaciones = data;
+    });
+  }
 }

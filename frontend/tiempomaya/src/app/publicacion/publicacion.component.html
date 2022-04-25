@@ -24,16 +24,16 @@
 		<img src="https://icon-library.com/images/loading-gif-icon/loading-gif-icon-14.jpg" style="margin: auto;" alt="" id="loading">
 	</div>
 	<div class="community">
-		<div class="publication-concept" *ngFor="let item of items; let i = index" [attr.data-index]="i">
+		<div class="publication-concept" *ngFor="let publicacion of publicaciones">
 			<div class="container-author">
 				<div class="name-author">
-					<a href="#">@yelbetto</a>
-					<img src="../../assets/imgs/face1.png" alt="">
+					<a href="#">{{publicacion.nombreUsuarioAutor}}</a>
+					<img src="../../assets/imgs/face2.png" alt="">
 				</div>
-				<h5>date-placeholder</h5>
+				<h5>{{publicacion.fechaHora}}</h5>
 			</div>
 			<div class="container-profile-elements oriented-left">
-				<h1>concept{{item}}</h1>
+				<h1>{{publicacion.idConcepto}}</h1>
 				<div class="profile-element forClick" (click)="votation($event,1)">
 					<label class="reputation">700</label>
 					<img class="mayan-level" src="../../assets/imgs/cacao.png" alt="">
@@ -44,9 +44,7 @@
 				</div>
 				<a href="#" style="font-size: 0.5em;text-decoration: dashed;">COMENTARIOS(#)</a>
 			</div>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ullam blanditiis ipsam asperiores
-				voluptatem excepturi optio voluptatibus debitis. Ducimus, quisquam. Corporis ipsam maxime iure similique
-				neque reprehenderit sunt minima quaerat.</p>
+			<p>{{publicacion.descripcion}}</p>
 		</div>
 	</div>
 
