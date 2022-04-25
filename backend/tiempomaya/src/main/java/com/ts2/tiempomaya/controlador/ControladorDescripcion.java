@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/descripcion")
 public class ControladorDescripcion {
@@ -22,7 +22,7 @@ public class ControladorDescripcion {
         this.servicioDescripcion.guardar(descripcion);
     }
 
-    @GetMapping("/descripciones/{idConcepto}")
+    @GetMapping("/descripciones/concepto/{idConcepto}")
     public List<Descripcion> obtenerDescripcionesConcepto(@PathVariable int idConcepto){
         return this.servicioDescripcion.obtenerDescripcionesConcepto(idConcepto);
     }
@@ -30,11 +30,6 @@ public class ControladorDescripcion {
     @GetMapping("/descripciones/usuario/{nombreUsuario}")
     public List<Descripcion> obtenerDescripcionesUsuario(@PathVariable String nombreUsuario){
         return this.servicioDescripcion.obtenerDescripcionesUsuario(nombreUsuario);
-    }
-
-    @GetMapping("/test")
-    public String testing(){
-        return "TESTING FROM SPRING BOOT DESCRIPCION";
     }
 
 }

@@ -1,0 +1,10 @@
+<h1>LISTA DE ELEMENTOS</h1>
+<div>
+    <input type="text" [(ngModel)]="valor">
+    <button (click)="ejecutar()">Actualizar</button>
+</div>
+<div>
+    <div *ngFor="let elemento of elementos">
+        <h3>{{elemento.idJuego}}</h3>
+    </div>
+</div>

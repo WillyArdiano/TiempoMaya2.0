@@ -1,0 +1,246 @@
+.perfil-data{
+	background-image: url(../../assets/imgs/rock.png);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+	padding-top: 2em;    
+	height: fit-content;
+    padding-bottom: 2em;
+	position: sticky;
+}
+
+.mayan-profile{
+	/*background-image: url(../../assets/imgs/memoryback.png);*/
+	border-radius: 1em;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	padding: 0.5em;
+}
+
+.mayan-profile img{
+	width: 100%;
+	height: auto;
+}
+
+.container-table{
+	display: grid;
+	grid-template-columns: 20% 80%;
+}
+
+.mayan-level{
+	
+	width: 2em;
+	height: 2em;
+	padding: 2px;
+}
+
+h1{
+	display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.level{
+	background-color: rgb(22, 22, 22);
+	border-radius: 50%;
+	width: 2.5em;
+	height: 2.5em;
+}
+
+.gold{
+	border: 5px gold solid;
+}
+
+.profile-element{
+	display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.container-profile-elements{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	font-size: 1.5em;
+	font-weight: 700;
+}
+
+.publication-concept{
+	display: flex;
+	flex-direction: column;
+	font-size: 1.5em;
+	margin: 1em;
+	padding: 0.5em;
+	background-image: url(../../assets/imgs/rock2.png);
+}
+
+.publication-concept label{
+	font-weight: bold;
+	color: gold;
+	text-align: center;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+textarea{
+	font-size: 1em;
+	background-color: #1616167a;
+	color: gold;
+}
+
+h1,h5,p{
+	margin: 0;
+}
+
+.publication-concept p {
+	font-size: 0.8em;
+}
+
+.publication-concept h1 {
+	font-size: 1.2em;
+	text-align: left;
+	justify-content: left;
+}
+
+.publication-concept h5 {
+	font-size: 0.6em;
+	text-align: right;
+}
+
+.publication-concept label{
+	font-weight: bold;
+    color: white;
+    background-color: transparent; 
+    text-align: center;
+    position: absolute;
+	font-size: 0.5em;
+	color: black;
+}
+
+.oriented-left{
+	justify-content: flex-start;
+}
+
+.publication-concept img{
+	width: 1em;
+	height: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+h1,label{
+	color: gold;
+}
+
+p, h5{
+	font-weight: bold;
+}
+
+.publication-concept p{
+	
+	font-family: 'Josefin Sans', sans-serif !important;
+	font-weight: 900;
+}
+
+.mayan-level:hover, .reputation:hover{
+	cursor: url(../../assets/imgs/pointer2.png),auto;
+}
+
+.forClick:hover{
+	transform: scale(1.7);
+}
+
+.clicked{
+	transform: scale(1.7);
+}
+
+.notClicked{
+	filter: saturate(0.1);
+}
+
+@keyframes buttonApparence{
+	0%{
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(1.5);
+	}
+}
+p{
+	margin-top: 1em;
+}
+
+.selector{
+	display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+	background-image: url(../../assets/imgs/rock.png);
+	border-bottom-left-radius: 1em;
+	border-bottom-right-radius: 1em;
+}
+
+.selector input, .selector select{
+	width: 80%;
+}
+
+.community{
+	width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+@media (max-width: 600px) {
+	.selector{
+		width: 100%;
+	}
+	.community{
+		width: 100%;
+	}
+  }
+
+  #loadingCommunity{
+	display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+	margin-top: 2em;
+	color: yellow;
+  }
+
+  .publication-concept{
+	  animation: 0.5s createBox;
+	  filter: drop-shadow(2px 4px 6px black);
+  }
+
+  #loading{
+	  width: 20%;
+	  height: auto;
+  }

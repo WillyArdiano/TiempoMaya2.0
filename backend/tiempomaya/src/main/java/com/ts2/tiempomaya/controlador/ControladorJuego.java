@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/juego")
 public class ControladorJuego {
@@ -23,13 +23,13 @@ public class ControladorJuego {
     }
 
     @GetMapping("/obtenerJuegos")
-    public List<Juego> obtenerJuego(){
+    public List<Juego> obtenerJuegos(){
         return this.servicioJuego.obtenerJuegos();
     }
 
-    @GetMapping("/test")
-    public String testing(){
-        return "TESTING FROM SPRING BOOT JUEGO";
+    @GetMapping("/obtenerJuegos/{nombreUsuario}")
+    public List<Juego> obtenerJuegos(@PathVariable String nombreUsuario){
+        return this.servicioJuego.obtenerJuegos(nombreUsuario);
     }
 
 }

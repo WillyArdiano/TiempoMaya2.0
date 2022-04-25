@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +10,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tiempomaya';
-  showMemory = true;
-  showCalc = false;
+  logeado = false;
 
-  public toggle(num: number) {
-    if (num == 0) {
-      (<HTMLDivElement>document.getElementById("calc")).style.display = "none";
-      (<HTMLDivElement>document.getElementById("memory")).style.display = "";
-    } else if (num == 1) {
-      (<HTMLDivElement>document.getElementById("calc")).style.display = "";
-      (<HTMLDivElement>document.getElementById("memory")).style.display = "none";
+  constructor(public router: Router, private cookies:CookieService, public location:Location){
+    console.log(this.cookies.get("usuario"));
+    if (this.cookies.get("usuario")){
+      this.logeado = true;
+    } else {
+      this.logeado = false;
+      if (location.path(false)!="/login" && location.path(false)!="/registro"){
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigateByUrl("/login");
+      }
     }
+  }
 
-    const interval_id = window.setInterval(function () { }, Number.MAX_SAFE_INTEGER);
-
-    // Clear any timeout/interval up to that id
-    for (let i = 1; i < interval_id; i++) {
-      window.clearInterval(i);
-    }
+  public logout(){
+    this.cookies.delete("usuario");
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(["login"]);
   }
 }

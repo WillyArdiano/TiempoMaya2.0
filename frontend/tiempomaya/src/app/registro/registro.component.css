@@ -1,0 +1,76 @@
+
+.mayan-register{
+	background-image: url(../../assets/imgs/rock2.png);
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1em;
+	border-radius: 1em;
+}
+
+.mayan-register h1{
+	text-align: center;
+}
+
+.mayan-register label, .mayan-register p{
+	font-family: 'Josefin Sans', sans-serif !important;
+	font-weight: 700;
+	margin-top: 0.5em;
+}
+
+.mayan-register label{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.mayan-register label img{
+	width: 8%;
+	height: auto;
+	padding: 0;
+	background-color: black;
+}
+
+.mayan-register p{
+	font-size: 1.25em;
+	text-align: center;
+}
+
+.mayan-register input{
+	width: 70%;
+	margin-bottom: 0.5em;
+	text-align: center;
+}
+
+.mayan-register img{
+	background-color: gold;
+	border-radius: 50%;
+	width: 20%;
+	height: auto;
+}
+
+label .tooltiptext {
+	visibility: hidden;
+	width: fit-content;
+	background-color: transparent;
+	color: black;
+	text-align: center;
+	padding: 1em;
+	border-radius: 6px;
+	font-size: 0.7em;
+	/* Position the tooltip text - see examples below! */
+	position: absolute;
+	z-index: 500;
+}
+
+label{
+	cursor: url(../../assets/imgs/pointer.png),auto;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+label:hover .tooltiptext {
+	visibility: visible;
+}

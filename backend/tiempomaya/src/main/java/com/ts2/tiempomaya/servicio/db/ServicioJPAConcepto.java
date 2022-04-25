@@ -25,4 +25,9 @@ public class ServicioJPAConcepto implements ServicioConcepto {
     public void guardar(Concepto concepto) {
         this.repositorioConcepto.save(concepto);
     }
+
+    @Override
+    public Concepto obtenerConcepto(int idConcepto) {
+        return this.repositorioConcepto.findByIdConcepto(idConcepto);
+    }
 }

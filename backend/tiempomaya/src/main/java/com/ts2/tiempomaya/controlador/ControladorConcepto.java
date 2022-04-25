@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/concepto")
 public class ControladorConcepto {
@@ -27,9 +27,9 @@ public class ControladorConcepto {
         return this.servicioConcepto.obtenerConceptos();
     }
 
-    @GetMapping("/test")
-    public String testing(){
-        return "TESTING FROM SPRING BOOT CONCEPTO";
+    @GetMapping("/{idConcepto}")
+    public Concepto obtenerConcepto(@PathVariable int idConcepto){
+        return this.servicioConcepto.obtenerConcepto(idConcepto);
     }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-perfil',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router, private cookies:CookieService) { 
+    if (!this.cookies.get("usuario")){
+      this.router.navigateByUrl("/login");
+    } else {
+      console.log("todo correcto");
+    } 
+  }
 
   ngOnInit(): void {
   }
