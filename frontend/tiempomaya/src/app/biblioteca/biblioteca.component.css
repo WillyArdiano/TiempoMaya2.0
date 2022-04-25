@@ -114,8 +114,9 @@ h1,h5,p{
 
 .publication-concept h1 {
 	font-size: 1.2em;
-	text-align: left;
-	justify-content: left;
+	text-align: center;
+	justify-content: center;
+	width: 100%;
 }
 
 .publication-concept h5 {
@@ -223,24 +224,16 @@ p{
 	}
   }
 
-  #loadingCommunity{
-	display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-	margin-top: 2em;
-	color: yellow;
-  }
 
-  .publication-concept{
-	  animation: 0.5s createBox;
-	  filter: drop-shadow(2px 4px 6px black);
-  }
+.publication-concept{
+	border-radius: 1em;
+	border: 0.2em solid gold;
+}
 
-  #loading{
-	  width: 20%;
-	  height: auto;
-  }
+p, h5, a{
+	color: aliceblue;
+}
+
+p{
+	text-align: justify;
+}

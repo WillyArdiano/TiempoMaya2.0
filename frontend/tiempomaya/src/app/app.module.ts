@@ -6,6 +6,11 @@ import { MemoriaComponent } from './memoria/memoria.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { PublicacionComponent } from './publicacion/publicacion.component';
+import { BibliotecaComponent } from './biblioteca/biblioteca.component';
+import { CookieService } from 'ngx-cookie-service';
 
 import { UsuarioService } from './servicio/usuario.service';
 import { TestComponent } from './test/test.component';
@@ -19,7 +24,11 @@ import { FormsModule } from '@angular/forms';
     CalculadoraComponent,
     HomeComponent,
     PerfilComponent,
-    TestComponent
+    TestComponent,
+    LoginComponent,
+    RegistroComponent,
+    PublicacionComponent,
+    BibliotecaComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

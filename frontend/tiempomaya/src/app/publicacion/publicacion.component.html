@@ -1,0 +1,53 @@
+<div class="background"></div>
+<div>
+	<div class="selector">
+		<h1>BUSQUEDA Y FILTRADO</h1>
+		<input type="text" placeholder="REALIZA TU BUSQUEDA">
+		<label for="busqueda">BUSCAR POR</label>
+		<select name="busqueda" id="busqueda">
+			<option value="concepto">CONCEPTO</option>
+			<option value="usuario">USUARIO</option>
+		</select>
+		<label for="filtrar">FILTRAR POR</label>
+		<select name="busqueda" id="busqueda">
+			<option value="concepto">MEJOR PUNTEADOS</option>
+			<option value="concepto">ULTIMOS COMPARTIDOS</option>
+		</select>
+		<div class="mayan-button" style="display: block !important;">
+			<span class="back-button">IR</span>
+			<button type="button" name="Hover">BUSCAR Y FILTRAR</button>
+		</div>
+	</div>
+	<h1 style="margin-top: 1em; " id="titleCommunity">COMUNIDAD MAYA</h1>
+	<div id="loadingCommunity">
+		<h2>CARGANDO...</h2>
+		<img src="https://icon-library.com/images/loading-gif-icon/loading-gif-icon-14.jpg" style="margin: auto;" alt="" id="loading">
+	</div>
+	<div class="community">
+		<div class="publication-concept" *ngFor="let item of items; let i = index" [attr.data-index]="i">
+			<div class="container-author">
+				<div class="name-author">
+					<a href="#">@yelbetto</a>
+					<img src="../../assets/imgs/face1.png" alt="">
+				</div>
+				<h5>date-placeholder</h5>
+			</div>
+			<div class="container-profile-elements oriented-left">
+				<h1>concept{{item}}</h1>
+				<div class="profile-element forClick" (click)="votation($event,1)">
+					<label class="reputation">700</label>
+					<img class="mayan-level" src="../../assets/imgs/cacao.png" alt="">
+				</div>
+				<div class="profile-element forClick" (click)="votation($event,0)">
+					<label class="reputation">700</label>
+					<img class="mayan-level" src="../../assets/imgs/skull.png" alt="">
+				</div>
+				<a href="#" style="font-size: 0.5em;text-decoration: dashed;">COMENTARIOS(#)</a>
+			</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ullam blanditiis ipsam asperiores
+				voluptatem excepturi optio voluptatibus debitis. Ducimus, quisquam. Corporis ipsam maxime iure similique
+				neque reprehenderit sunt minima quaerat.</p>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="background"></div>
+<div class="container">
+	<div class="mayan-register">
+		<h1>TIEMPO MAYA</h1>
+		<img src="../../assets/imgs/face2.png" alt="">
+		<p>Ingresa tus datos para ser de esta comunidad</p>
+		<label for="usuario">USUARIO
+			<img src="https://icon-library.com/images/loading-gif-icon/loading-gif-icon-14.jpg" id="loading" style="display: none;" alt="">
+			<span class="tooltiptext" id="messageUser"></span></label>
+		<input type="text" placeholder="ELIGE UN NOMBRE DE USUARIO" (keyup)="verifyUser($event)" #usuario id="usuario">
+		<label for="nombre">NOMBRE</label>
+		<input type="text" placeholder="ESCRIBE TU NOMBRE" (keyup)="verifyEmpty($event)" id="nombre">
+		<label for="nacimiento">FECHA DE NACIMIENTO</label>
+		<input type="date" (change)="verifyEmpty($event)" id="nacimiento">
+		<label for="password">CONTRASEÑA</label>
+		<input type="password" placeholder="ESCRIBE TU CONTRASEÑA" (keyup)="verifyEmpty($event)" id="password">
+		<label for="password2">CONFIRMA TU CONTRASEÑA</label>
+		<input type="password" placeholder="CONFIRMA TU CONTRASEÑA" (keyup)="verifyEmpty($event)" id="password2">
+		<div class="mayan-button" style="display: block !important;">
+			<span class="back-button">REGISTRATE</span>
+			<button type="button" name="Hover" (click)="register()">TERMINADO</button>
+		</div>
+	</div>
+</div>

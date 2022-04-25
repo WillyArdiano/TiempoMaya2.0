@@ -1,26 +1,30 @@
 <div class="banner">
 	<div class="component-banner">
-		<a href="/" style="display: flex;flex-direction: row;">
-			<img src="../assets/imgs/logo.webp" alt="">
+		<a href="/comunidad" style="display: flex;flex-direction: row;">
+			<img src="../assets/imgs/logo3.png" alt="" >
 			<h1>TIEMPO MAYA</h1>
 		</a>
 	</div>
-	<div class="component-banner">
+	<div class="component-banner" *ngIf="logeado">
 		<a href="/memoria" class="comp-banner">
-			<img src="../assets/imgs/memoryIcon.png" alt="">
+			<img class="menu-icon" src="../assets/imgs/memoryIcon.png" alt="">
 			<h1 class="name-comp showName">Memoria</h1>
 		</a>
 		<a href="/calculadora" class="comp-banner">
-			<img src="../assets/imgs/calcIcon.png" alt="">
+			<img class="menu-icon" src="../assets/imgs/calcIcon.png" alt="">
 			<h1 class="name-comp showName">Calculadora</h1>
 		</a>
-		<a class="comp-banner">
-			<img src="../assets/imgs/library.png" alt="">
+		<a href="/biblioteca" class="comp-banner">
+			<img class="menu-icon" src="../assets/imgs/library.png" alt="">
 			<h1 class="name-comp showName">Biblioteca</h1>
 		</a>
 		<a href="/perfil" class="comp-banner">
-			<img src="../assets/imgs/profile.png" alt="">
+			<img class="menu-icon" src="../assets/imgs/profile.png" alt="">
 			<h1 class="name-comp showName">Perfil</h1>
+		</a>
+		<a (click)="logout()" class="comp-banner">
+			<img class="menu-icon" src="../assets/imgs/logout.png" alt="">
+			<h1 class="name-comp showName">Salir</h1>
 		</a>
 	</div>
 </div>

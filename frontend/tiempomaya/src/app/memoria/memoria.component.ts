@@ -305,7 +305,20 @@ export class MemoriaComponent implements OnInit {
             this.time_stopped = true;
             (<HTMLDivElement>document.getElementById("win")).style.display = "flex";
             this.winAudio.play();
-            clearInterval(this.intervalo)
+            let min = (<HTMLLabelElement>document.getElementById("minutes")).textContent;
+            let sec = (<HTMLLabelElement>document.getElementById("seconds")).textContent;
+            let err = (<HTMLLabelElement>document.getElementById("error")).textContent;
+            let cor = (<HTMLLabelElement>document.getElementById("correct")).textContent;
+            let minutes = parseInt(min as string);
+            let seconds = parseInt(sec as string);
+            let errors = parseInt(err as string);
+            let correct = parseInt(cor as string);
+            seconds += minutes*60;
+            let time_perfect = 100;
+            errors = correct / errors;
+            time_perfect = time_perfect - (errors*seconds);
+            (<HTMLSpanElement>document.getElementById("points")).textContent = time_perfect+"";
+            clearInterval(this.intervalo);
           }
         } else {
           this.addError();
