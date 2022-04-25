@@ -42,5 +42,10 @@ public class ControladorUsuario {
         }
     }
 
+    @GetMapping("/obtener/{nombreUsuario}")
+    public Usuario obtenerUsuario(@PathVariable String nombreUsuario){
+        return this.servicioUsuario.obtenerUsuario(nombreUsuario);
+    }
+
 
 }

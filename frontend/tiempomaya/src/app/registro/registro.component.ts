@@ -1,4 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { Usuario } from '../modelo/Usuario';
+import { UsuarioService } from '../servicio/usuario.service';
 
 @Component({
   selector: 'app-registro',
@@ -6,7 +10,8 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  constructor() { }
+  
+  constructor(private usuarioService:UsuarioService,private cookies:CookieService,public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -20,19 +25,21 @@ export class RegistroComponent implements OnInit {
       if (wordSearch == event.target.value) {
         if (event.target.value) {
           (<HTMLImageElement>document.querySelector("#loading")).style.display = "";
-          if (wordSearch==="yelbetto"){
-            (<HTMLImageElement>document.querySelector("#loading")).src = "../../assets/imgs/check.png";
-            (<HTMLInputElement>document.querySelector("#usuario")).style.backgroundColor = "#2196f3";
-            (<HTMLImageElement>document.querySelector("#usuario")).setAttribute("status","1");
-            (<HTMLInputElement>document.querySelector("#messageUser")).textContent = "";
-            (<HTMLInputElement>document.querySelector("#messageUser")).style.backgroundColor = "transparent";
-          } else {
-            (<HTMLImageElement>document.querySelector("#loading")).src = "../../assets/imgs/error.png";
-            (<HTMLInputElement>document.querySelector("#usuario")).style.backgroundColor = "red";
-            (<HTMLImageElement>document.querySelector("#usuario")).setAttribute("status","0");
-            (<HTMLInputElement>document.querySelector("#messageUser")).textContent = "USUARIO NO DISPONIBLE";
-            (<HTMLInputElement>document.querySelector("#messageUser")).style.backgroundColor = "red";
-          }
+          this.usuarioService.obtenerUsuario(wordSearch).subscribe(data=>{
+            if (data===null){
+              (<HTMLImageElement>document.querySelector("#loading")).src = "../../assets/imgs/check.png";
+              (<HTMLInputElement>document.querySelector("#usuario")).style.backgroundColor = "#2196f3";
+              (<HTMLImageElement>document.querySelector("#usuario")).setAttribute("status","1");
+              (<HTMLInputElement>document.querySelector("#messageUser")).textContent = "";
+              (<HTMLInputElement>document.querySelector("#messageUser")).style.backgroundColor = "transparent";
+            } else {
+              (<HTMLImageElement>document.querySelector("#loading")).src = "../../assets/imgs/error.png";
+              (<HTMLInputElement>document.querySelector("#usuario")).style.backgroundColor = "red";
+              (<HTMLImageElement>document.querySelector("#usuario")).setAttribute("status","0");
+              (<HTMLInputElement>document.querySelector("#messageUser")).textContent = "USUARIO NO DISPONIBLE";
+              (<HTMLInputElement>document.querySelector("#messageUser")).style.backgroundColor = "red";
+            }
+          });
         } 
       }
     }, 2000);
@@ -57,7 +64,11 @@ export class RegistroComponent implements OnInit {
       if (nombre!==""){
         if (nacimiento!==""){
           if (password===password2 && password!==""){
+            let usuario:Usuario = new Usuario(user,5,password,nacimiento,-1,"");
+            this.usuarioService.guardarUsuario(usuario).subscribe();
             alert("todo correcto");
+            this.cookies.set("usuario",user);
+            this.router.navigateByUrl("/perfil");
             return;
           } else {
             if (password!==password2 && password!=="" && password2!==""){

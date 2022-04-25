@@ -24,4 +24,8 @@ export class UsuarioService {
     return this.http.post<number>(this.url+"/aut",usuario);
   }
 
+  public obtenerUsuario(nombreUsuario:string){
+    return this.http.get(this.url+"/obtener/"+nombreUsuario);
+  }
+
 }

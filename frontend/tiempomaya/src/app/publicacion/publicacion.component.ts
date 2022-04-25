@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Descripcion } from '../modelo/Descripcion';
+import { DescripcionService } from '../servicio/descripcion.service';
 
 @Component({
   selector: 'app-publicacion',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicacionComponent implements OnInit {
 
+
+  publicaciones:Array<Descripcion>;
   items: any;
-  constructor() { }
+  constructor(private descripcionService:DescripcionService) {
+    this.publicaciones= new Array();
+    this.descripcionService.obtenerDescripciones().subscribe(data=>{
+      this.publicaciones = data;
+    });
+  }
 
   ngOnInit(): void {
     setTimeout(() => {

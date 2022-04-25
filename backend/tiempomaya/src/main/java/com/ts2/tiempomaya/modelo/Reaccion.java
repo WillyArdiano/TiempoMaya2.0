@@ -28,7 +28,7 @@ public class Reaccion {
     private int idDescripcion;
     @Column(name = "fecha_hora")
     @JsonProperty("fechaHora")
-    @JsonFormat(pattern= Fecha.FORMATO_FECHA)
+    @JsonFormat(pattern= Fecha.FORMATO_FECHA_1)
     private Timestamp fechaHora;
     @Column(name = "tipo_reaccion")
     private int tipoReaccion;

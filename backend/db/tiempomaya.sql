@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `tiempomaya` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `tiempomaya`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Linux (x86_64)
 --
 -- Host: localhost    Database: tiempomaya
@@ -33,7 +35,7 @@ CREATE TABLE `Comentario` (
   KEY `fk_descripcion_comentario_idx` (`id_descripcion`),
   CONSTRAINT `fk_descripcion_comentario` FOREIGN KEY (`id_descripcion`) REFERENCES `Descripcion` (`id_descripcion`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_nombre_usuario_comentario` FOREIGN KEY (`nombre_usuario`) REFERENCES `Usuario` (`nombre_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +44,6 @@ CREATE TABLE `Comentario` (
 
 LOCK TABLES `Comentario` WRITE;
 /*!40000 ALTER TABLE `Comentario` DISABLE KEYS */;
-INSERT INTO `Comentario` VALUES (1,'jugador_2','Este es mi comentario para el concepto 1','2022-04-16 22:05:53',1),(2,'jugador_1','Este es mi comentario para el concepto 1','2022-04-16 22:05:53',1),(3,'jugador_1','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(4,'jugador_2','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(6,'jugador_2','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(7,'jugador_1','Este es mi comentario para el concepto 2','2022-04-16 22:05:53',2),(9,'jugador_1',NULL,'2022-04-17 22:05:53',2);
 /*!40000 ALTER TABLE `Comentario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,11 +55,10 @@ DROP TABLE IF EXISTS `Concepto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Concepto` (
-  `id_concepto` int NOT NULL AUTO_INCREMENT,
   `palabra` varchar(45) NOT NULL,
   `significado` varchar(500) NOT NULL,
-  PRIMARY KEY (`id_concepto`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`palabra`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `Concepto` (
 
 LOCK TABLES `Concepto` WRITE;
 /*!40000 ALTER TABLE `Concepto` DISABLE KEYS */;
-INSERT INTO `Concepto` VALUES (1,'palabra1','Este es el significado de la palabra1'),(2,'palabra2','Este es el significado de la palabra2'),(3,'palabra3','Este es el significado de la palabra3'),(4,'palabra4','Este es el significado de la palabra4');
+INSERT INTO `Concepto` VALUES ('HIERBA',''),('MAYA',''),('TRAJE TÍPICO','');
 /*!40000 ALTER TABLE `Concepto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,15 +81,15 @@ DROP TABLE IF EXISTS `Descripcion`;
 CREATE TABLE `Descripcion` (
   `id_descripcion` int NOT NULL AUTO_INCREMENT,
   `nombre_usuario_autor` varchar(25) NOT NULL,
-  `id_concepto` int NOT NULL,
   `fecha_hora` timestamp NOT NULL,
   `descripcion` varchar(2000) NOT NULL,
+  `id_concepto` varchar(45) NOT NULL,
   PRIMARY KEY (`id_descripcion`),
   KEY `fk_usuario_autor_descripcion_idx` (`nombre_usuario_autor`),
-  KEY `fk_id_concepto_descripcion_idx` (`id_concepto`),
-  CONSTRAINT `fk_id_concepto_descripcion` FOREIGN KEY (`id_concepto`) REFERENCES `Concepto` (`id_concepto`),
+  KEY `fk_descripcion_concepto_idx` (`id_concepto`),
+  CONSTRAINT `fk_concepto_descripcion` FOREIGN KEY (`id_concepto`) REFERENCES `Concepto` (`palabra`),
   CONSTRAINT `fk_usuario_autor_descripcion` FOREIGN KEY (`nombre_usuario_autor`) REFERENCES `Usuario` (`nombre_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `Descripcion` (
 
 LOCK TABLES `Descripcion` WRITE;
 /*!40000 ALTER TABLE `Descripcion` DISABLE KEYS */;
-INSERT INTO `Descripcion` VALUES (1,'jugador_1',3,'2022-04-16 22:05:53','Esta es una descripcion del concepto 3'),(2,'jugador_2',3,'2022-04-16 22:05:53','Esta es una descripcion del concepto 3'),(3,'jugador_2',3,'2022-04-16 22:05:53','Esta es una descripcion del concepto 3'),(4,'jugador_2',3,'2022-04-16 22:05:53','Esta es una descripcion del concepto 3'),(5,'jugador_2',1,'2022-04-16 22:05:53','Esta es una descripcion del concepto 3');
+INSERT INTO `Descripcion` VALUES (14,'willy','2022-04-25 02:22:36','La cultura maya fue una civilización mesoamericana que se desarrolló en México (en los estados de Yucatán, Campeche, Quintana Roo, Chiapas y Tabasco), también en Guatemala, Belice y la parte occidental de Honduras y El Salvador, abarcando más de 300 000 km².1​ Destacó a lo largo de más de dos milenios en numerosos aspectos socioculturales como su escritura, uno de los pocos sistemas de escritura plenamente desarrollados del continente americano precolombino, su arte, la arquitectura, su mitología y sus notables sistemas de numeración, así como en astronomía y matemáticas.','MAYA'),(15,'willy','2022-04-25 02:23:43','El traje típico es la indumentaria que expresa la identidad cultural de una región, pueblo, cultura o nación. Esta vestimenta se puede usar para el uso cotidiano o para eventos especiales, ya sean celebraciones religiosas como bodas, bautizos o laicas como fiestas mayores, festivales o ferias.','TRAJE TÍPICO'),(16,'willy','2022-04-25 02:25:27','Planta que carece de tronco leñoso permanente y cuyo tallo es de tejido blando, de color verde; la planta perece después de dar la simiente.','HIERBA'),(17,'willy','2022-04-25 02:25:42','Planta que carece de tronco leñoso permanente y cuyo tallo es de tejido blando, de color verde; la planta perece después de dar la simiente. Versión 2.','HIERBA');
 /*!40000 ALTER TABLE `Descripcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ CREATE TABLE `Juego` (
   PRIMARY KEY (`id_juego`),
   KEY `fk_nombre_usuario_punteo_idx` (`nombre_usuario`),
   CONSTRAINT `fk_nombre_usuario_juego` FOREIGN KEY (`nombre_usuario`) REFERENCES `Usuario` (`nombre_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +158,7 @@ CREATE TABLE `Juego` (
 
 LOCK TABLES `Juego` WRITE;
 /*!40000 ALTER TABLE `Juego` DISABLE KEYS */;
-INSERT INTO `Juego` VALUES (1,'jugador_1',80,'00:01:30',1,1,'2022-04-15 02:34:43'),(2,'jugador_2',80,'00:01:30',1,1,'2022-04-15 04:19:39'),(3,'jugador_2',80,'00:01:30',1,1,'2022-04-15 04:19:39');
+INSERT INTO `Juego` VALUES (8,'usuario1',65,'00:00:39',0,1,'2022-04-25 11:58:03'),(9,'usuario1',78,'00:01:10',26,2,'2022-04-25 12:06:14');
 /*!40000 ALTER TABLE `Juego` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +180,7 @@ CREATE TABLE `Reaccion` (
   KEY `fk_id_descripcion_reaccion_idx` (`id_descripcion`),
   CONSTRAINT `fk_id_descripcion_reaccion` FOREIGN KEY (`id_descripcion`) REFERENCES `Descripcion` (`id_descripcion`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_nombre_usuario_reaccion` FOREIGN KEY (`nombre_usuario`) REFERENCES `Usuario` (`nombre_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +189,6 @@ CREATE TABLE `Reaccion` (
 
 LOCK TABLES `Reaccion` WRITE;
 /*!40000 ALTER TABLE `Reaccion` DISABLE KEYS */;
-INSERT INTO `Reaccion` VALUES (1,'jugador_1',2,'2022-04-17 22:05:53',0),(2,'jugador_2',2,'2022-04-17 22:05:53',0),(3,'jugador_3',2,'2022-04-17 22:05:53',0),(4,'jugador_4',2,'2022-04-17 22:05:53',0),(5,'jugador_5',2,'2022-04-17 22:05:53',0),(6,'jugador_6',2,'2022-04-17 22:05:53',0),(7,'jugador_7',1,'2022-04-17 22:05:53',1);
 /*!40000 ALTER TABLE `Reaccion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +228,7 @@ CREATE TABLE `Tipo_Usuario` (
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(150) NOT NULL,
   PRIMARY KEY (`id_tipo_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +237,7 @@ CREATE TABLE `Tipo_Usuario` (
 
 LOCK TABLES `Tipo_Usuario` WRITE;
 /*!40000 ALTER TABLE `Tipo_Usuario` DISABLE KEYS */;
-INSERT INTO `Tipo_Usuario` VALUES (1,'Jugador','Usuario de tipo jugador, este usuario tiene los siguientes beneficios...');
+INSERT INTO `Tipo_Usuario` VALUES (4,'Impostor','Tipo de usuario'),(5,'Aldeano','Tipo de usuario'),(6,'Sacerdote','Tipo de usuario'),(7,'Halach Uinic','Tipo de usuario');
 /*!40000 ALTER TABLE `Tipo_Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,7 +267,7 @@ CREATE TABLE `Usuario` (
 
 LOCK TABLES `Usuario` WRITE;
 /*!40000 ALTER TABLE `Usuario` DISABLE KEYS */;
-INSERT INTO `Usuario` VALUES ('jugador_1',1,'123','2022-12-11',1,'Direccion del jugador 1'),('jugador_2',1,'1232','2022-12-11',1,'Direccion del jugador 2'),('jugador_3',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_4',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_5',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_6',1,'123222','2021-11-12',1,'Direccion del jugador 2'),('jugador_7',1,'123222','2021-11-12',1,'Direccion del jugador 2');
+INSERT INTO `Usuario` VALUES ('usuario1',5,'usuario1','2022-04-24',-1,''),('willy',5,'willy','2022-04-24',-1,'');
 /*!40000 ALTER TABLE `Usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -281,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-17 16:11:52
+-- Dump completed on 2022-04-25 15:17:35

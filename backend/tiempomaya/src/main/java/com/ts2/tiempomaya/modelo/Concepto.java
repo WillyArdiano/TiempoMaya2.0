@@ -15,9 +15,6 @@ import javax.persistence.*;
 public class Concepto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_concepto")
-    private int idConcepto;
     @Column(name = "palabra")
     private String palabra;
     @Column(name = "significado")

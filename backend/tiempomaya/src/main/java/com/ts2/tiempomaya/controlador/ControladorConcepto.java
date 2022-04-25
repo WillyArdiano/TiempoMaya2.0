@@ -19,6 +19,7 @@ public class ControladorConcepto {
 
     @PostMapping("/guardar")
     public void guardar(@RequestBody Concepto concepto){
+        System.out.println(concepto);
         this.servicioConcepto.guardar(concepto);
     }
 
@@ -27,9 +28,9 @@ public class ControladorConcepto {
         return this.servicioConcepto.obtenerConceptos();
     }
 
-    @GetMapping("/{idConcepto}")
-    public Concepto obtenerConcepto(@PathVariable int idConcepto){
-        return this.servicioConcepto.obtenerConcepto(idConcepto);
+    @GetMapping("/palabra/{palabra}")
+    public Concepto obtenerConcepto(@PathVariable String palabra){
+        return this.servicioConcepto.obtenerConcepto(palabra);
     }
 
 }
