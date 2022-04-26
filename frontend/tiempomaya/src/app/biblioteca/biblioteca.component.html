@@ -2,10 +2,10 @@
 <div>
 	<div class="selector">
 		<h1>BUSQUEDA</h1>
-		<input type="text" placeholder="REALIZA TU BUSQUEDA">
+		<input type="text" [(ngModel)]="buscado" placeholder="REALIZA TU BUSQUEDA">
 		<div class="mayan-button" style="display: block !important;">
 			<span class="back-button">BUSCAR</span>
-			<button type="button" name="Hover">REVISAR BIBLIOTECA</button>
+			<button type="button" name="Hover" (click)="revisar()">REVISAR BIBLIOTECA</button>
 		</div>
 		<label for="elementos" style="text-align: center;color: yellow;font-size: 2em; margin-top: 1em;">CALENDARIO</label>
 		<select name="elementos" id="selectElementos" style="margin-bottom: 1em;" [(ngModel)]="tipoElemento" (change)="actualizarElementos()">
@@ -19,12 +19,12 @@
 	<div class="community">
 		<div *ngFor="let elemento of elementos" class="publication-concept">
 			<div class="container-profile-elements oriented-left">
-				<h1>{{elemento.nombre}}</h1>
+				<h1 class="nombre-biblioteca">{{elemento.nombre}}</h1>
 			</div>
-			<h2>
+			<h2 style="text-align: center;color: #dbb902;">
 				Significado
 			</h2>
-			<h3>
+			<h3 style="text-align: center;color: #dbb902;">
 				{{elemento.significado}}
 			</h3>
 			<p>{{elemento.descripcion}}</p>

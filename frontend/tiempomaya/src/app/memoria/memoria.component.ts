@@ -355,6 +355,8 @@ export class MemoriaComponent implements OnInit {
   }
 
   public verPuntajes(){
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
     this.router.navigateByUrl("/memoria");
   }
 

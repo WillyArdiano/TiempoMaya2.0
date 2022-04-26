@@ -12,8 +12,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 select, option{
@@ -26,6 +26,7 @@ select, option{
 
 th,td{
 	padding: 0.5em;
+    text-align: center;
 }
 
 th{
@@ -33,11 +34,13 @@ th{
 }
 
 thead{
-	background-image: url(../../assets/imgs/memory.png);
+	background-image: url(../../assets/imgs/rock.png);
 }
 
 tbody{
-	background-image: url(../../assets/imgs/memoryback.png);
+	background-image: url(../../assets/imgs/rock2.png);
+    color: black;
+    font-weight: 900;
 }
 
 .win{

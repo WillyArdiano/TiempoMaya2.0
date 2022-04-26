@@ -83,7 +83,7 @@
 	filter: invert(90%) sepia(32%) saturate(252%) hue-rotate(338deg) brightness(98%) contrast(93%);
 }
 
-@media (max-width: 755px) {
+@media (max-width: 855px) {
 	.banner{
 		height: auto;
 		justify-content: center;

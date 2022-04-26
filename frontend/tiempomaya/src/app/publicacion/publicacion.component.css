@@ -89,6 +89,7 @@ h1{
 	margin: 1em;
 	padding: 0.5em;
 	background-image: url(../../assets/imgs/rock2.png);
+	width: 80% !important;
 }
 
 .publication-concept label{

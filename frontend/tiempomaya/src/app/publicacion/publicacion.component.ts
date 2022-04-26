@@ -16,16 +16,11 @@ export class PublicacionComponent implements OnInit {
     this.publicaciones= new Array();
     this.descripcionService.obtenerDescripciones().subscribe(data=>{
       this.publicaciones = data;
+      (<HTMLDivElement>document.getElementById("loadingCommunity")).style.display ="none";
     });
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.items = ["1", "2", "3", "4"];
-      (<HTMLDivElement>document.getElementById("loadingCommunity")).style.display ="none";
-      (<HTMLDivElement>document.getElementById("community")).style.display ="flex";
-      (<any>document.getElementById("titleCommunity")).style.display ="flex";
-    }, 2000)
   }
 
   public votation(div: any, positive: number) {

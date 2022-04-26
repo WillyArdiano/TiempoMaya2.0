@@ -75,6 +75,8 @@ export class PerfilComponent implements OnInit {
   public actualizarDescripciones(){
     this.descripcionService.obtenerDescripcionesUsuario(this.cookies.get("usuario")).subscribe(data=>{
       this.publicaciones = data;
+      (<HTMLInputElement>document.querySelector("#concepto")).value = "";
+      (<HTMLTextAreaElement>document.querySelector("#descripcion")).value = "";
     });
   }
 }
